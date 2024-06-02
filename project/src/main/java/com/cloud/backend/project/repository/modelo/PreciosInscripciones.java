@@ -31,15 +31,15 @@ public class PreciosInscripciones {
 	
 	@ManyToOne
 	@JoinColumn(name = "camp_id")
-	private Campeonato campeonato;
+	private Campeonatos campeonato;
 	
 	//toString
-	@Override
+	/*@Override
 	public String toString() {
 		return "PreciosInscripciones [id=" + id + ", costoSocio=" + costoSocio + ", costoNoSocio=" + costoNoSocio
 				+ ", costoPruebaAdicional=" + costoPruebaAdicional + ", cuentaBancaria=" + cuentaBancaria
 				+ ", campeonato=" + campeonato + "]";
-	}
+	}*/
 
 	//SET y GET
 	public Integer getId() {
@@ -82,11 +82,11 @@ public class PreciosInscripciones {
 		this.cuentaBancaria = cuentaBancaria;
 	}
 
-	public Campeonato getCampeonato() {
+	public Campeonatos getCampeonato() {
 		return campeonato;
 	}
 
-	public void setCampeonato(Campeonato campeonato) {
+	public void setCampeonato(Campeonatos campeonato) {
 		this.campeonato = campeonato;
 	}
 	
