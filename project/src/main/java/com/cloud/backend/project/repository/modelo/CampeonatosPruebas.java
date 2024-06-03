@@ -28,6 +28,10 @@ public class CampeonatosPruebas {
 	@JoinColumn(name = "prue_id")
 	private Pruebas pruebas;
 
+	@ManyToOne
+	@JoinColumn(name="camp_id")
+	private Campeonatos campeonatos;
+
 	//SET y GET
 	public Integer getId() {
 		return id;

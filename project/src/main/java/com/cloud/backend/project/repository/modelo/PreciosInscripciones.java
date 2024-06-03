@@ -31,7 +31,7 @@ public class PreciosInscripciones {
 	
 	@ManyToOne
 	@JoinColumn(name = "camp_id")
-	private Campeonatos campeonato;
+	private Campeonatos campeonatos;
 	
 	//toString
 	/*@Override

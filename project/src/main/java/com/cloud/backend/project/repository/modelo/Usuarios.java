@@ -3,6 +3,7 @@ package com.cloud.backend.project.repository.modelo;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -56,6 +57,9 @@ public class Usuarios {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Roles roles;
+
+    @OneToMany(mappedBy = "usuarios",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<UsuariosAsociacionesDeportivas> usuariosAsociacionesDeportivas;
 
     //GET Y SET
     public Integer getId() {
