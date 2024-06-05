@@ -29,7 +29,7 @@ public class AsociacionesDeportivas {
 	private String nombre;
 	
 	@OneToMany(mappedBy = "asociacionesDeportivas",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-	private List<AsociacionesDeportivas> asociacionesDeportivas;
+	private List<UsuariosAsociacionesDeportivas> usuariosAsociacionesDeportivas;
 
 	//SET Y GET
 	public Integer getId() {

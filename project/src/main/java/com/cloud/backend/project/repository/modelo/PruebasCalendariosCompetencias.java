@@ -27,7 +27,7 @@ public class PruebasCalendariosCompetencias {
 	
 	@ManyToOne
 	@JoinColumn(name = "caco_id")
-	private CampeonatosCompetidores campeonatosCompetidores;
+	private CalendariosCompetencias calendariosCompetencias;
 
 	public Integer getId() {
 		return id;
@@ -45,12 +45,12 @@ public class PruebasCalendariosCompetencias {
 		this.pruebas = pruebas;
 	}
 
-	public CampeonatosCompetidores getCampeonatosCompetidores() {
-		return campeonatosCompetidores;
+	public CalendariosCompetencias getCalendariosCompetencias() {
+		return calendariosCompetencias;
 	}
 
-	public void setCampeonatosCompetidores(CampeonatosCompetidores campeonatosCompetidores) {
-		this.campeonatosCompetidores = campeonatosCompetidores;
+	public void setCalendariosCompetencias(CalendariosCompetencias calendariosCompetencias) {
+		this.calendariosCompetencias = calendariosCompetencias;
 	}
 	
 	

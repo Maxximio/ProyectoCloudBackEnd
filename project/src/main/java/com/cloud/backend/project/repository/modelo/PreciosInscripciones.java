@@ -83,11 +83,11 @@ public class PreciosInscripciones {
 	}
 
 	public Campeonatos getCampeonato() {
-		return campeonato;
+		return campeonatos;
 	}
 
-	public void setCampeonato(Campeonatos campeonato) {
-		this.campeonato = campeonato;
+	public void setCampeonato(Campeonatos campeonatos) {
+		this.campeonatos = campeonatos;
 	}
 	
 }

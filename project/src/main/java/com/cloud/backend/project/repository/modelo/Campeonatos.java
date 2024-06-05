@@ -26,7 +26,7 @@ public class Campeonatos {
 	@SequenceGenerator(name = "camp_id_seq", sequenceName = "camp_id_seq", allocationSize = 1, initialValue = 1)
 	private Integer id;
 
-    @Column(name = "camp_id")
+    @Column(name = "camp_nombre")
     private String nombre;
     @Column(name = "camp_organizador")
 	private String  organizador;
@@ -39,7 +39,7 @@ public class Campeonatos {
 	@Column(name = "camp_inscripcion_fin")
 	private LocalDate inscripcionFin;
 
-     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<PreciosInscripciones> preciosInscripciones;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)

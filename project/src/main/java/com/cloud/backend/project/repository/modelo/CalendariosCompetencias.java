@@ -3,6 +3,7 @@ package com.cloud.backend.project.repository.modelo;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "calendarios_competencias")
@@ -20,6 +21,9 @@ public class CalendariosCompetencias {
     @ManyToOne
     @JoinColumn(name = "camp_id")
     private Campeonatos campeonatos;
+
+    @OneToMany(mappedBy = "calendariosCompetencias",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<PruebasCalendariosCompetencias> pruebasCalendariosCompetencias;
 
     //GET Y SET
     public Integer getId() {

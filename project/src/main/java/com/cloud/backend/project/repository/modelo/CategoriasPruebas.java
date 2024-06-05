@@ -23,7 +23,7 @@ public class CategoriasPruebas {
 	@JoinColumn(name = "cate_id")
 	private Categorias categorias;
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cate_id")
+	@JoinColumn(name = "prue_id")
 	private Pruebas pruebas;
 	
 	//GETTERS Y SETTERS

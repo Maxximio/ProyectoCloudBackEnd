@@ -61,6 +61,12 @@ public class Usuarios {
     @OneToMany(mappedBy = "usuarios",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<UsuariosAsociacionesDeportivas> usuariosAsociacionesDeportivas;
 
+    @OneToMany(mappedBy = "usuarios",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<DocumentosUsuarios> documentosUsuarios;
+
+    @OneToMany(mappedBy = "usuarios",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Competidores> competidores;
+
     //GET Y SET
     public Integer getId() {
         return id;

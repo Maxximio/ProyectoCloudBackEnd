@@ -1,14 +1,18 @@
 package com.cloud.backend.project.repository.modelo;
 
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -35,6 +39,9 @@ public class Competidores {
     @ManyToOne
 	@JoinColumn(name = "asde_id")
 	private AsociacionesDeportivas asociacionesDeportivas;
+
+    @OneToMany(mappedBy = "competidores",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Resultados> resultados;
 
     /*//to string
     @Override
