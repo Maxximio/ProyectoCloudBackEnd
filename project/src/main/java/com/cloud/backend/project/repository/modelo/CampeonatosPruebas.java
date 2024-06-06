@@ -15,9 +15,9 @@ import jakarta.persistence.Table;
 public class CampeonatosPruebas {
 	
 	@Id
-	@Column(name = "comp_prue_id")
+	@Column(name = "camp_prue_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "campeonatos_pruebas_id_seq")
-	@SequenceGenerator(name = "campeonatos_pruebas_id_seq", sequenceName = "campeonatos_pruebas_id_seq", allocationSize = 1, initialValue = 1)
+	@SequenceGenerator(name = "campeonatos_pruebas_id_seq", sequenceName = "campeonatos_pruebas_id_seq", allocationSize = 1, initialValue = 41)
 	private Integer id;
 	
 	@ManyToOne
