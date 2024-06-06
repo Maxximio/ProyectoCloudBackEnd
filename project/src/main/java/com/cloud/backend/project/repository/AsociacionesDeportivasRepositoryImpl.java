@@ -14,6 +14,7 @@ public class AsociacionesDeportivasRepositoryImpl implements IAsociacionesDeport
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
 	@Override
 	public Boolean insertar(AsociacionesDeportivas asociacionesDeportivas) {
 		// TODO Auto-generated method stub

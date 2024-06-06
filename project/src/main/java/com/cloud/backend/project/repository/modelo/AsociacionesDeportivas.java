@@ -48,4 +48,14 @@ public class AsociacionesDeportivas {
 		this.nombre = nombre;
 	}
 
+	
+	public List<UsuariosAsociacionesDeportivas> getUsuariosAsociacionesDeportivas() {
+		return usuariosAsociacionesDeportivas;
+	}
+
+	public void setUsuariosAsociacionesDeportivas(List<UsuariosAsociacionesDeportivas> usuariosAsociacionesDeportivas) {
+		this.usuariosAsociacionesDeportivas = usuariosAsociacionesDeportivas;
+	}
+
+	
 }

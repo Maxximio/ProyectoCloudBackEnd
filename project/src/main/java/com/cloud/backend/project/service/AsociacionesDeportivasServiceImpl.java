@@ -19,7 +19,12 @@ public class AsociacionesDeportivasServiceImpl implements IAsociacionesDeportiva
 	@Override
 	public Boolean actualizar(AsociacionesDeportivas asociaDeportivas) {
 		// TODO Auto-generated method stub
-		return asociacionesDeportivasRepository.actualizar(asociaDeportivas);
+		AsociacionesDeportivas deportivas=
+				this.asociacionesDeportivasRepository
+				.buscarPorId(asociaDeportivas.getId());
+		deportivas.setNombre(asociaDeportivas.getNombre());
+		return asociacionesDeportivasRepository
+				.actualizar(deportivas);
 	}
 
 	@Override
