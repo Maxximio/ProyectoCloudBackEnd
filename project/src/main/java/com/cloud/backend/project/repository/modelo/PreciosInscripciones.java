@@ -27,7 +27,7 @@ public class PreciosInscripciones {
 	@Column(name = "prin_costo_prueba_adicional")
 	private Integer costoPruebaAdicional;
 	@Column(name = "prin_cuenta_bancaria")
-	private Integer cuentaBancaria;
+	private String cuentaBancaria;
 	
 	@ManyToOne
 	@JoinColumn(name = "camp_id")
@@ -74,11 +74,11 @@ public class PreciosInscripciones {
 		this.costoPruebaAdicional = costoPruebaAdicional;
 	}
 
-	public Integer getCuentaBancaria() {
+	public String getCuentaBancaria() {
 		return cuentaBancaria;
 	}
 
-	public void setCuentaBancaria(Integer cuentaBancaria) {
+	public void setCuentaBancaria(String cuentaBancaria) {
 		this.cuentaBancaria = cuentaBancaria;
 	}
 
