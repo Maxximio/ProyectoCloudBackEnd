@@ -43,6 +43,12 @@ public class Competidores {
     @OneToMany(mappedBy = "competidores",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Resultados> resultados;
 
+    @OneToMany(mappedBy = "competidores",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<CampeonatosCompetidores> campeonatosCompetidores;
+
+    @OneToMany(mappedBy = "competidores",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<CompetidoresPruebas> competidoresPruebas;
+
     /*//to string
     @Override
     public String toString() {

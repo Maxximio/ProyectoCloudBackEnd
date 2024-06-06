@@ -3,7 +3,11 @@ package com.cloud.backend.project.repository;
 import com.cloud.backend.project.repository.modelo.Usuarios;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -42,10 +46,24 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
     @Override
     public Boolean eliminar(Integer id) {
         try {
-            this.entityManager.remove(id);
+            Usuarios user = this.entityManager.find(Usuarios.class, id);
+            this.entityManager.remove(user);
             return true;
         } catch (Exception e) {
+            //System.out.println("Error, ->"+e);
             return false;
         }
     }
+
+    @Override
+	public List<Usuarios> buscarTodosUsuarios() {
+        try {
+            TypedQuery<Usuarios> myQuery = this.entityManager.createQuery("SELECT u FROM Usuarios u ",
+                    Usuarios.class);
+            return myQuery.getResultList();           
+        } catch (Exception e) {
+            return null;
+        }
+
+	}
 }

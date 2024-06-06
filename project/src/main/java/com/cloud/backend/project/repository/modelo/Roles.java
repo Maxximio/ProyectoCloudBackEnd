@@ -20,7 +20,7 @@ public class Roles {
     @Column(name = "role_codigo")
     private String codigo;
 
-    @OneToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Usuarios> usuarios;
 
     //get y set

@@ -11,8 +11,8 @@ public class Usuarios {
 
     @Id
     @Column(name = "usua_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usua_id_seq")
-    @SequenceGenerator(name = "usua_id_seq", sequenceName = "usua_id_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuarios_usua_id_seq")
+    @SequenceGenerator(name = "usuarios_usua_id_seq", sequenceName = "usuarios_usua_id_seq", allocationSize = 1, initialValue = 1)
     private Integer id;
 
     @Column(name = "usua_nombres")
@@ -36,7 +36,7 @@ public class Usuarios {
     @Column(name = "usua_cont_nombre")
     private String contactoNombre;
 
-    @Column(name = "usua_cont_telefono")
+    @Column(name = "usua_cont_telf") //Aqui crearon otra columna, "usua_cont_telfefono", no se con cual se queden
     private String contactoTelefono;
 
     @Column(name = "usua_password")
@@ -52,9 +52,9 @@ public class Usuarios {
     private Boolean estado;
 
     @Column(name = "usua_estado_reg")
-    private Character estadoRegistro;
+    private Boolean estadoRegistro;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "role_id")
     private Roles roles;
 
@@ -172,11 +172,11 @@ public class Usuarios {
         this.estado = estado;
     }
 
-    public Character getEstadoRegistro() {
+    public Boolean getEstadoRegistro() {
         return estadoRegistro;
     }
 
-    public void setEstadoRegistro(Character estadoRegistro) {
+    public void setEstadoRegistro(Boolean estadoRegistro) {
         this.estadoRegistro = estadoRegistro;
     }
 

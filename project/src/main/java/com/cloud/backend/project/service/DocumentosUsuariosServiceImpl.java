@@ -2,6 +2,9 @@ package com.cloud.backend.project.service;
 
 import com.cloud.backend.project.repository.IDocumentosUsuariosRepo;
 import com.cloud.backend.project.repository.modelo.DocumentosUsuarios;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +33,11 @@ public class DocumentosUsuariosServiceImpl implements IDocuemtosUsuariosService{
     public DocumentosUsuarios buscarDocumentos(Integer id) {
         return this.documentosUsuariosRepo.buscarDocumentos(id);
     }
+
+    @Override
+    public List<DocumentosUsuarios> buscarDocumentosDeUsuarioDadoId(Integer id) {
+        return this.documentosUsuariosRepo.buscarDocumentosDeUsuarioDadoId(id);
+    }
+
+
 }
