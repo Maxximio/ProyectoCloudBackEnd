@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.cloud.backend.project.repository.modelo.DocumentosUsuarios;
 
-public interface IDocuemtosUsuariosService {
+public interface IDocumetosUsuariosService {
 
     public Boolean insertarDocumentos(DocumentosUsuarios documentosUsuarios);
     public Boolean actualizarDocumentos(DocumentosUsuarios documentosUsuarios);

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cloud.backend.project.repository.modelo.DocumentosUsuarios;
 import com.cloud.backend.project.repository.modelo.Usuarios;
-import com.cloud.backend.project.service.IDocuemtosUsuariosService;
+import com.cloud.backend.project.service.IDocumetosUsuariosService;
 import com.cloud.backend.project.service.IUsuariosService;
 
 //Importacion estática
@@ -33,7 +33,7 @@ public class UsuariosControllerRestFul {
     private IUsuariosService usuariosService;
 
     @Autowired
-    private IDocuemtosUsuariosService docuemtosUsuariosService;
+    private IDocumetosUsuariosService docuemtosUsuariosService;
     
 
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
