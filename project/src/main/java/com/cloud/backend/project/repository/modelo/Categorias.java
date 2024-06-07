@@ -2,6 +2,8 @@ package com.cloud.backend.project.repository.modelo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,12 +15,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
+@JsonIgnoreProperties(value = "categoriasPruebas")
 public class Categorias {
 	
 	@Id
 	@Column(name = "cate_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cate_id_seq")
-	@SequenceGenerator(name = "cate_id_seq", sequenceName = "cate_id_seq", allocationSize = 1, initialValue = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categorias_cate_id_seq")
+	@SequenceGenerator(name = "categorias_cate_id_seq", sequenceName = "categorias_cate_id_seq", allocationSize = 1, initialValue = 1)
 	private Integer id;
 	
 	@Column(name = "cate_nombre")

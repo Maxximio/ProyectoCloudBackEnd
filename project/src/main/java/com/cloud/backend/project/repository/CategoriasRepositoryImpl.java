@@ -46,7 +46,7 @@ public class CategoriasRepositoryImpl implements ICategoriasRepository{
 	@Override
 	public Boolean eliminar(Integer id) {
 		try {
-			this.entityManager.remove(id);
+			this.entityManager.remove(this.buscarPorId(id));
 			return true;
 		} catch (Exception e) {
 			return false;
