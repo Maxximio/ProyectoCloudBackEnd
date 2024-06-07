@@ -1,5 +1,7 @@
 package com.cloud.backend.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,12 @@ public class CompetidoresService implements ICompetidoresService{
     public Competidores buscarPorId(Integer id) {
         return competidoresRepository.buscarPorId(id);
     }
+
+	@Override
+	public List<Competidores> listarCompetidores() {
+		// TODO Auto-generated method stub
+		return competidoresRepository.listarCompetidores();
+	}
 
 
 
