@@ -21,11 +21,17 @@ public class CampeonatosRepoImpl implements ICampeonatosRepo{
     private EntityManager em;
 
     @Override
-    public Campeonatos actualizarCampeonatos(Campeonatos campeonatos) {
-        // TODO Auto-generated method stub
-        Campeonatos camp = this.buscarPorId(campeonatos.getId());
-        campeonatos.setId(camp.getId());
-        return this.em.merge(campeonatos);
+    public Boolean actualizarCampeonatos(Campeonatos campeonatos) {
+        try{
+            Campeonatos camp = this.buscarPorId(campeonatos.getId());
+            campeonatos.setId(camp.getId());
+            this.em.merge(campeonatos);
+            return true;
+        }catch(Exception e){
+            e.getMessage();
+            return false;
+        }
+        
     }
 
     @Override
@@ -55,15 +61,17 @@ public class CampeonatosRepoImpl implements ICampeonatosRepo{
     }
 
     @Override
-    public Campeonatos guarCampeonatos(Campeonatos campeonatos) {
-        // TODO Auto-generated method stub
-        this.em.persist(campeonatos);
-        return campeonatos;
+    public Boolean guarCampeonatos(Campeonatos campeonatos) {
+        try {
+            this.em.persist(campeonatos);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
     public List<Campeonatos> listarCampeonatos() {
-        // TODO Auto-generated method stub
         TypedQuery<Campeonatos> myQ = this.em.createQuery("SELECT c FROM Campeonatos c",Campeonatos.class);
         return myQ.getResultList();
     }

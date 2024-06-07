@@ -18,36 +18,31 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public Campeonatos actualizarCampeonatos(Campeonatos campeonatos) {
-        // TODO Auto-generated method stub
+    public Boolean actualizarCampeonatos(Campeonatos campeonatos) {
         return this.campeonatosRepo.actualizarCampeonatos(campeonatos);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public int borrarCampenatos(Integer id) {
-        // TODO Auto-generated method stub
         return this.campeonatosRepo.borrarCampenatos(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public Campeonatos buscarPorId(Integer id) {
-        // TODO Auto-generated method stub
         return this.campeonatosRepo.buscarPorId(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public Campeonatos guarCampeonatos(Campeonatos campeonatos) {
-        // TODO Auto-generated method stub
+    public Boolean guarCampeonatos(Campeonatos campeonatos) {
         return this.campeonatosRepo.guarCampeonatos(campeonatos);
     }
 
     @Override
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public List<Campeonatos> listarCampeonatos() {
-        // TODO Auto-generated method stub
         return this.campeonatosRepo.listarCampeonatos();
     }
 

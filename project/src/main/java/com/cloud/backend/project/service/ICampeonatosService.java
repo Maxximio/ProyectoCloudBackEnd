@@ -6,14 +6,13 @@ import java.util.*;
 
 public interface ICampeonatosService {
 
-    Campeonatos guarCampeonatos(Campeonatos campeonatos);
+    Boolean guarCampeonatos(Campeonatos campeonatos);
 
     List<Campeonatos> listarCampeonatos();
 
     Campeonatos buscarPorId(Integer id);
 
-    Campeonatos actualizarCampeonatos(Campeonatos campeonatos);
-
+    Boolean actualizarCampeonatos(Campeonatos campeonatos);
 
     int borrarCampenatos(Integer id);
 
