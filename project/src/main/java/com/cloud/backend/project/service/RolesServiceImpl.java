@@ -5,6 +5,8 @@ import com.cloud.backend.project.repository.modelo.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RolesServiceImpl implements IRolesService {
 
@@ -29,5 +31,10 @@ public class RolesServiceImpl implements IRolesService {
     @Override
     public Roles buscar(Integer id) {
         return this.rolesRepository.buscarRol(id);
+    }
+
+    @Override
+    public List<Roles> buscarTodosRoles() {
+        return this.rolesRepository.buscarTodosRoles();
     }
 }
