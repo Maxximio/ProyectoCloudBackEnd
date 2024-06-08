@@ -12,4 +12,6 @@ public interface IUsuariosService {
     public Boolean eliminar(Integer id);
 
     public List<Usuarios> buscarTodosUsuarios();
+    
+    public Boolean cambioEstado(Integer id) ;
 }

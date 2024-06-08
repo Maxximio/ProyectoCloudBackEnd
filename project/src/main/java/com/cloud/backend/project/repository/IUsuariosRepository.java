@@ -11,4 +11,5 @@ public interface IUsuariosRepository {
     public Boolean actualizar(Usuarios usuarios);
     public Boolean eliminar(Integer id);
     public List<Usuarios> buscarTodosUsuarios();
+
 }

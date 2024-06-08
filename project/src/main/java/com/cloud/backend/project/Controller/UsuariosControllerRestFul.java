@@ -84,4 +84,13 @@ public class UsuariosControllerRestFul {
     }
     
     
+    @PutMapping(path = "/estado/{id}")
+	public ResponseEntity<Boolean> actualizarEstado(@PathVariable Integer id) {
+        return new ResponseEntity<>(this.usuariosService.cambioEstado(id), null, HttpStatus.OK);
+	}
+    
+    
+    
+    
+    
 }
