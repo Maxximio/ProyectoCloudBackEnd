@@ -1,9 +1,19 @@
 package com.cloud.backend.project.repository.modelo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+import com.cloud.backend.project.auth.Modelo.ERol;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "roles")
 public class Roles {
@@ -14,39 +24,21 @@ public class Roles {
     @SequenceGenerator(name = "role_id_seq", sequenceName = "role_id_seq", allocationSize = 1, initialValue = 1)
     private Integer id;
 
-    @Column(name = "role_descripcion")
+    @Column(name = "role_descripcion",nullable = false)
     private String descripcion;
 
-    @Column(name = "role_codigo")
-    private String codigo;
+    @Column(name = "role_codigo",nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ERol codigo;
 
-    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Usuarios> usuarios;
+    public Roles(String descripcion, ERol codigo) {
+        this.descripcion=descripcion;
+    	this.codigo = codigo;
+    }
+
+    //@OneToMany(mappedBy = "roles", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+   // private List<Usuarios> usuarios;
 
     //get y set
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
 
 }
