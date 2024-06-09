@@ -19,20 +19,9 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
     private EntityManager entityManager;
 
     @Override
-<<<<<<< HEAD
-    public Integer insertar(Usuarios usuarios) {
-        try {
-            this.entityManager.persist(usuarios);
-            return usuarios.getId();
-        } catch (Exception e) {
-            return 0;
-        }
-
-=======
     public Usuarios insertar(Usuarios usuarios) {
             this.entityManager.persist(usuarios);
             return usuarios;
->>>>>>> auth
     }
 
     @Override

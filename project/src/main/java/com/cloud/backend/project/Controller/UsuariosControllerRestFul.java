@@ -75,8 +75,9 @@ public class UsuariosControllerRestFul {
     public ResponseEntity<Integer> insertarUsuario(@RequestBody Usuarios usuario) {
         var roles = this.rolesService.buscar(5);
         System.out.println(roles);
-        usuario.setRoles(roles);
-        return new ResponseEntity<>(this.usuariosService.insertar(usuario), null, HttpStatus.OK);
+       // usuario.setRoles(roles);
+       // return new ResponseEntity<>(this.usuariosService.insertar(usuario), null, HttpStatus.OK);
+       return null;
     }
 
 	@PutMapping(path = "/{id}")
