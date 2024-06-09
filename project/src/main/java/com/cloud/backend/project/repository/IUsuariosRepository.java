@@ -6,10 +6,18 @@ import com.cloud.backend.project.repository.modelo.Usuarios;
 
 public interface IUsuariosRepository {
 
+<<<<<<< HEAD
     public Integer insertar(Usuarios usuarios);
+=======
+    public Usuarios insertar(Usuarios usuarios);
+>>>>>>> auth
     public Usuarios buscarPorId(Integer id);
     public Boolean actualizar(Usuarios usuarios);
     public Boolean eliminar(Integer id);
     public List<Usuarios> buscarTodosUsuarios();
+
+    public Usuarios buscarPorEmail(String email);
+
+    public boolean existeUsuarioConEmail(String email) ;
 
 }

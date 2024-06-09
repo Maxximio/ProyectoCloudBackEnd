@@ -1,4 +1,4 @@
-package com.cloud.backend.project.Config;
+package com.cloud.backend.project.config;
 
 import java.util.Properties;
 
@@ -13,8 +13,13 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class EmailConfig {
 
 
+<<<<<<< HEAD
     private static final String email ="naciolan0atletismo0master@gmail.com";//cambiar estas creenciales
     private static final String password="zsobjjrfzmtiawld";//de ser necesario
+=======
+    private static final String email ="naciolan0atletismo0master@gmail.com";
+    private static final String password="zsobjjrfzmtiawld";
+>>>>>>> auth
 
     private Properties getMailProperties() {
         Properties properties = new Properties();
