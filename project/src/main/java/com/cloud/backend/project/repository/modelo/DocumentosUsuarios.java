@@ -1,5 +1,7 @@
 package com.cloud.backend.project.repository.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -23,6 +25,7 @@ public class DocumentosUsuarios {
 
     @ManyToOne
     @JoinColumn(name = "usua_id")
+	@JsonIgnore
     private Usuarios usuarios;
     
   //get y set
