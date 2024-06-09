@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cloud.backend.project.repository.modelo.DocumentosUsuarios;
 import com.cloud.backend.project.repository.modelo.Usuarios;
 import com.cloud.backend.project.service.IDocumetosUsuariosService;
+import com.cloud.backend.project.service.IRolesService;
 import com.cloud.backend.project.service.IUsuariosService;
 
 //Importacion estática
@@ -26,6 +28,7 @@ import com.cloud.backend.project.service.IUsuariosService;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/usuarios")
 public class UsuariosControllerRestFul {
 
@@ -35,6 +38,8 @@ public class UsuariosControllerRestFul {
     @Autowired
     private IDocumetosUsuariosService docuemtosUsuariosService;
     
+    @Autowired
+    private IRolesService rolesService;
 
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Usuarios> consultarPorId(@PathVariable Integer id) {
@@ -67,13 +72,15 @@ public class UsuariosControllerRestFul {
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> insertarUsuario(@RequestBody Usuarios usuario) {
+    public ResponseEntity<Integer> insertarUsuario(@RequestBody Usuarios usuario) {
+        var roles = this.rolesService.buscar(5);
+        System.out.println(roles);
+        usuario.setRoles(roles);
         return new ResponseEntity<>(this.usuariosService.insertar(usuario), null, HttpStatus.OK);
     }
 
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Boolean> actualizarPorId(@RequestBody Usuarios usuario, @PathVariable Integer id) {
-		usuario.setId(id);
         return new ResponseEntity<>(this.usuariosService.actualizar(usuario), null, HttpStatus.OK);
 	}
 
@@ -88,9 +95,5 @@ public class UsuariosControllerRestFul {
 	public ResponseEntity<Boolean> actualizarEstado(@PathVariable Integer id) {
         return new ResponseEntity<>(this.usuariosService.cambioEstado(id), null, HttpStatus.OK);
 	}
-    
-    
-    
-    
     
 }

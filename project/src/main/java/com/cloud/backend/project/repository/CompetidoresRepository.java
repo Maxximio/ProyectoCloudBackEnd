@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.cloud.backend.project.repository.modelo.Campeonatos;
 import com.cloud.backend.project.repository.modelo.Competidores;
 
 import jakarta.persistence.EntityManager;

@@ -30,7 +30,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
     }
 
     @Override
-    public Boolean insertar(Usuarios usuario) {
+    public Integer insertar(Usuarios usuario) {
         return this.usuariosRepository.insertar(usuario);
     }
 

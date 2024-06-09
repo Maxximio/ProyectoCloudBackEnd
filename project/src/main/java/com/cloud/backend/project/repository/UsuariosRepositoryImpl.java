@@ -18,12 +18,12 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
     private EntityManager entityManager;
 
     @Override
-    public Boolean insertar(Usuarios usuarios) {
+    public Integer insertar(Usuarios usuarios) {
         try {
             this.entityManager.persist(usuarios);
-            return true;
+            return usuarios.getId();
         } catch (Exception e) {
-            return false;
+            return 0;
         }
 
     }

@@ -3,6 +3,7 @@ package com.cloud.backend.project.repository.modelo;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -23,7 +24,7 @@ public class Campeonatos {
     @Id
 	@Column(name = "camp_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "camp_id_seq")
-	@SequenceGenerator(name = "camp_id_seq", sequenceName = "camp_id_seq", allocationSize = 1, initialValue = 1)
+	@SequenceGenerator(name = "camp_id_seq", sequenceName = "camp_id_seq", allocationSize = 1, initialValue = 50)
 	private Integer id;
 
     @Column(name = "camp_nombre")
@@ -40,18 +41,23 @@ public class Campeonatos {
 	private LocalDate inscripcionFin;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<PreciosInscripciones> preciosInscripciones;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<CampeonatosPruebas> campeonatosPruebas;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<CalendariosCompetencias> calendariosCompetencias;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<CampeonatosCompetidores> campeonatosCompetidores;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<AsociacionesDeportivasCampeonatos> asociacionesDeportivasCampeonatos;
 
     //Getters and Setters
@@ -151,9 +157,4 @@ public class Campeonatos {
             List<AsociacionesDeportivasCampeonatos> asociacionesDeportivasCampeonatos) {
         this.asociacionesDeportivasCampeonatos = asociacionesDeportivasCampeonatos;
     } 
-
-
-    
-
-
 }

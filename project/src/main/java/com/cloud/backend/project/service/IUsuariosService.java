@@ -6,7 +6,7 @@ import com.cloud.backend.project.repository.modelo.Usuarios;
 
 public interface IUsuariosService {
 
-    public Boolean insertar(Usuarios usuario);
+    public Integer insertar(Usuarios usuario);
     public Usuarios buscarPorId(Integer id);
     public Boolean actualizar(Usuarios usuario);
     public Boolean eliminar(Integer id);

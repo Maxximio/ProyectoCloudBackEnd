@@ -13,8 +13,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class EmailConfig {
 
 
-    private static final String email ="emailCuentaAnfitrion";
-    private static final String password="contrasenia de aplicacion obtenida de gmail";
+    private static final String email ="naciolan0atletismo0master@gmail.com";//cambiar estas creenciales
+    private static final String password="zsobjjrfzmtiawld";//de ser necesario
 
     private Properties getMailProperties() {
         Properties properties = new Properties();
