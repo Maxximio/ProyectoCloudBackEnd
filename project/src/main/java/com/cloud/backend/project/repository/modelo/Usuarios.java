@@ -64,9 +64,13 @@ public class Usuarios {
     @Column(name = "usua_estado_reg")
     private Boolean estadoRegistro;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Roles.class,cascade = CascadeType.PERSIST)
+    /*@ManyToMany(fetch = FetchType.EAGER, targetEntity = Roles.class,cascade = CascadeType.PERSIST)
 	@JoinTable(name="usua_roles", joinColumns=@JoinColumn(name="usua_id"),inverseJoinColumns=@JoinColumn(name="role_id"))
-    private Set<Roles> roles;
+    private Set<Roles> roles;*/
+
+    @ManyToOne
+    @JoinColumn(name ="role_id")
+    private Roles roles;
 
     @OneToMany(mappedBy = "usuarios",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<UsuariosAsociacionesDeportivas> usuariosAsociacionesDeportivas;

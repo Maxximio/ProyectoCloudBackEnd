@@ -96,5 +96,7 @@ public class UsuariosControllerRestFul {
 	public ResponseEntity<Boolean> actualizarEstado(@PathVariable Integer id) {
         return new ResponseEntity<>(this.usuariosService.cambioEstado(id), null, HttpStatus.OK);
 	}
+
+    //metodo para filtrar los usuarios de una provincia
     
 }

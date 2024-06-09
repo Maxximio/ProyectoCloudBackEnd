@@ -41,7 +41,8 @@ public class AuthServiceImpl implements IAuthService{
                 .contactoNombre(usua.getContactoNombre())
                 .contactoTelefono(usua.getContactoTelefono())
                 .direccion(usua.getDireccion())
-                .roles(new ArrayList<Roles>(usua.getRoles()))
+                .roles(usua.getRoles())
+                //.roles(new ArrayList<Roles>(usua.getRoles()))
                 .sexo(usua.getSexo())
                 .telefono(usua.getTelefono())
                 .build();
@@ -51,12 +52,14 @@ public class AuthServiceImpl implements IAuthService{
     }
 
     @Override
-    public Boolean registroUsuarioAtleta(RegistroRequest registroRequest) {
-        Boolean flag=false;
+    public Integer registroUsuarioAtleta(RegistroRequest registroRequest) {
+        var flag=0;
         if(registroRequest.getEmail()!=null && !registroRequest.getEmail().isEmpty() 
          && registroRequest.getPassword()!=null && !registroRequest.getPassword().isEmpty()){
                if(!this.usuariosRepository.existeUsuarioConEmail(registroRequest.getEmail())){
                 try{
+                    Roles rol=new Roles();
+                    rol.setId(5);
                     Usuarios usua = Usuarios.builder()
                         .nombres(registroRequest.getNombres())
                         .apellidos(registroRequest.getApellidos())
@@ -65,18 +68,19 @@ public class AuthServiceImpl implements IAuthService{
                         .estado(registroRequest.getEstado())
                         .estadoRegistro(registroRequest.getEstadoRegistro())
                         .fechaNacimiento(registroRequest.getFechaNacimiento())
-                        .ciudad(registroRequest.getApellidos())
+                        .ciudad(registroRequest.getCiudad())
                         .contactoNombre(registroRequest.getContactoNombre())
                         .contactoTelefono(registroRequest.getContactoTelefono())
                         .direccion(registroRequest.getDireccion())
-                        .roles(Set.of(new Roles("Atleta",ERol.ATL)))
+                        .roles(rol)//provisional
+                        //.roles(Set.of(new Roles("Atleta",ERol.ATL)))
                         .sexo(registroRequest.getSexo())
                         .telefono(registroRequest.getTelefono())
-                        .estado(true)
+                        .estado(false)
                         .estadoRegistro(false)
                     .build();
                     this.usuariosRepository.insertar(usua);
-                    flag=true;
+                    flag=usua.getId();
                 }catch(Exception ex){
                    ex.printStackTrace();
                 }

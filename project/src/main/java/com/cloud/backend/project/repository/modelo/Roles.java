@@ -1,5 +1,9 @@
 package com.cloud.backend.project.repository.modelo;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,8 +36,9 @@ public class Roles {
     	this.codigo = codigo;
     }
 
-    //@OneToMany(mappedBy = "roles", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-   // private List<Usuarios> usuarios;
+    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Usuarios> usuarios;
 
     //get y set
 

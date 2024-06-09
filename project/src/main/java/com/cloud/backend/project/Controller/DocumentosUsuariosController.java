@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/documentos/")
+@RequestMapping("/documentos")
 public class DocumentosUsuariosController {
 
 	
@@ -34,7 +34,7 @@ public class DocumentosUsuariosController {
 	private IDocumetosUsuariosService documetosUsuariosService;
 	
 	
-	@GetMapping(path="{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<DocumentosUsuarios>buscarDocumentosId(@PathVariable Integer id) {
 		return new ResponseEntity<>(this.documetosUsuariosService.buscarDocumentos(id),null,200);
 	}
@@ -65,6 +65,6 @@ public class DocumentosUsuariosController {
 		return new ResponseEntity<>(this.documetosUsuariosService.buscarDocumentosDeUsuarioDadoId(id),null,200);
 	}
     
-
+	//metodo para generar la lista de atletas no aceptados (estado registro false) por provincia.
 	
 }

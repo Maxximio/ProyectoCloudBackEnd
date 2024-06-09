@@ -33,6 +33,15 @@ public class AuthRestFullController {
     }
 
     @PostMapping("/registro")
+    public ResponseEntity<Integer> registroUsuarioAtleta(@RequestBody RegistroRequest registroRequest) {
+    Integer id = authService.registroUsuarioAtleta(registroRequest);
+    if (id != 0) {
+        return ResponseEntity.ok(id);
+    } else {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(id);
+    }
+    }
+    /*@PostMapping("/registro")
     public ResponseEntity<String> registroUsuarioAtleta(@RequestBody RegistroRequest registroRequest) {
         Boolean registroExitoso = authService.registroUsuarioAtleta(registroRequest);
         if (registroExitoso) {
@@ -40,5 +49,5 @@ public class AuthRestFullController {
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al registrar usuario");
         }
-    }
+    }*/
 }

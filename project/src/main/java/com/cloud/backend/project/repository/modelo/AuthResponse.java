@@ -31,5 +31,6 @@ public class AuthResponse implements Serializable{
     private Boolean estado;
     private Boolean estadoRegistro;
     
-    private List<Roles> roles;
+    //private List<Roles> roles;
+    private Roles roles;
 }
