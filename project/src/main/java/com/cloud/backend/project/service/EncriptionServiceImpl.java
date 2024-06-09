@@ -1,4 +1,4 @@
-package com.cloud.backend.project.auth.Service;
+package com.cloud.backend.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

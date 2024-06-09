@@ -1,4 +1,4 @@
-package com.cloud.backend.project.auth.Service;
+package com.cloud.backend.project.service;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -6,11 +6,11 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cloud.backend.project.auth.Modelo.AuthResponse;
-import com.cloud.backend.project.auth.Modelo.ERol;
-import com.cloud.backend.project.auth.Modelo.LoginRequest;
-import com.cloud.backend.project.auth.Modelo.RegistroRequest;
 import com.cloud.backend.project.repository.IUsuariosRepository;
+import com.cloud.backend.project.repository.modelo.AuthResponse;
+import com.cloud.backend.project.repository.modelo.ERol;
+import com.cloud.backend.project.repository.modelo.LoginRequest;
+import com.cloud.backend.project.repository.modelo.RegistroRequest;
 import com.cloud.backend.project.repository.modelo.Roles;
 import com.cloud.backend.project.repository.modelo.Usuarios;
 

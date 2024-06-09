@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloud.backend.project.auth.Modelo.AuthResponse;
-import com.cloud.backend.project.auth.Modelo.LoginRequest;
-import com.cloud.backend.project.auth.Modelo.RegistroRequest;
-import com.cloud.backend.project.auth.Service.IAuthService;
+import com.cloud.backend.project.repository.modelo.AuthResponse;
+import com.cloud.backend.project.repository.modelo.LoginRequest;
+import com.cloud.backend.project.repository.modelo.RegistroRequest;
+import com.cloud.backend.project.service.IAuthService;
 
 @RestController
 @CrossOrigin

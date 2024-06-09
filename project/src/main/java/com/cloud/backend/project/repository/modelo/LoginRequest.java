@@ -1,4 +1,4 @@
-package com.cloud.backend.project.auth.Modelo;
+package com.cloud.backend.project.repository.modelo;
 
 import java.io.Serializable;
 

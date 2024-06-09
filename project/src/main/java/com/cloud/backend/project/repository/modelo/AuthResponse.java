@@ -1,5 +1,4 @@
-package com.cloud.backend.project.auth.Modelo;
-
+package com.cloud.backend.project.repository.modelo;
 import java.io.Serializable;
 import java.util.*;
 
@@ -12,13 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RegistroRequest implements Serializable{
+public class AuthResponse implements Serializable{
 
     private static final long serialVersionUID =1L;
 
+    private Integer id;
     private String nombres;
     private String apellidos;
-   // private String cedula;
+    //private String cedula;
     private String direccion;
     private String ciudad;
     private String email;
@@ -30,5 +30,6 @@ public class RegistroRequest implements Serializable{
     private Character sexo;
     private Boolean estado;
     private Boolean estadoRegistro;
-
+    
+    private List<Roles> roles;
 }
