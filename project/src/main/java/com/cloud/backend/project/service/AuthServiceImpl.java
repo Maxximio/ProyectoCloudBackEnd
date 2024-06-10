@@ -37,7 +37,7 @@ public class AuthServiceImpl implements IAuthService{
                 .estado(usua.getEstado())
                 .estadoRegistro(usua.getEstadoRegistro())
                 .fechaNacimiento(usua.getFechaNacimiento())
-                .ciudad(usua.getApellidos())
+                .ciudad(usua.getCiudad())
                 .contactoNombre(usua.getContactoNombre())
                 .contactoTelefono(usua.getContactoTelefono())
                 .direccion(usua.getDireccion())

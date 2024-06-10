@@ -2,6 +2,8 @@ package com.cloud.backend.project.repository.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -25,7 +27,6 @@ public class DocumentosUsuarios {
 
     @ManyToOne
     @JoinColumn(name = "usua_id")
-	@JsonIgnore
     private Usuarios usuarios;
     
   //get y set
@@ -60,10 +61,6 @@ public class DocumentosUsuarios {
 
 	public void setExtension(String extension) {
 		this.extension = extension;
-	}
-
-	public Usuarios getUsuarios() {
-		return usuarios;
 	}
 
 	public void setUsuarios(Usuarios usuarios) {
