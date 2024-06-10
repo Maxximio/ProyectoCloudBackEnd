@@ -7,6 +7,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -88,6 +89,18 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
         } catch (NoResultException e) {
             return false;
         }
+    }
+
+    @Override
+    public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro) {
+        TypedQuery<Usuarios> myQ = this.entityManager.createQuery("SELECT u FROM Usuarios u WHERE u.ciudad=:provincia AND u.estadoRegistro=:estadoRegistro",Usuarios.class);
+            try {
+                  myQ.setParameter("estadoRegistro", estadoRegistro).setParameter("provincia", provincia);
+                  return myQ.getResultList();        
+            } catch (Exception e) {
+                return new ArrayList<>();
+            }
+        
     }
 
 }

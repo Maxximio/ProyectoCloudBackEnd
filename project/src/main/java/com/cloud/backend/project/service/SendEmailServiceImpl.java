@@ -17,6 +17,8 @@ public class SendEmailServiceImpl implements ISendEmailService {
 
         @Override
         public Integer enviarNotificacionEmail(String destinatario, String asunto, String mensajeHtml) {
+
+
             Integer flag =0;
              try{
             

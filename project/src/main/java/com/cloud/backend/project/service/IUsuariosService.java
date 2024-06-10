@@ -14,4 +14,7 @@ public interface IUsuariosService {
     public List<Usuarios> buscarTodosUsuarios();
     
     public Boolean cambioEstado(Integer id) ;
+    public Boolean cambioEstado(Integer id,String nuevoEstado) ;
+
+    public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro);
 }

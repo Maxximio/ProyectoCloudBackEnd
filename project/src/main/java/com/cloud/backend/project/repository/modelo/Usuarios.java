@@ -1,10 +1,7 @@
 package com.cloud.backend.project.repository.modelo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.*;
 
@@ -13,6 +10,7 @@ import java.util.*;
 @NoArgsConstructor
 @Builder
 @Entity
+@ToString
 @Table(name = "usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 public class Usuarios {
 

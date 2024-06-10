@@ -13,9 +13,7 @@ public class ProjectApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-
 		System.out.println("Ejecucion Correcta");
-		
 	}
 
 }

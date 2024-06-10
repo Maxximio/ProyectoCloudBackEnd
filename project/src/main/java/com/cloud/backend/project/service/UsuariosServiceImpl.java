@@ -48,5 +48,21 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		return this.usuariosRepository.actualizar(usuario);
 				
 	}
+
+    @Override
+    public Boolean cambioEstado(Integer id, String nuevoEstado) {
+        Usuarios usuario= this.usuariosRepository.buscarPorId(id);
+        System.out.println(Boolean.parseBoolean(nuevoEstado));
+        usuario.setEstadoRegistro(Boolean.parseBoolean(nuevoEstado));
+        System.out.println(usuario);
+        return this.usuariosRepository.actualizar(usuario);
+    }
+
+    @Override
+    public List<Usuarios> listarCiudadPorEstadoReg(String provincia, Boolean estadoRegistro) {
+        return this.usuariosRepository.listarCiudadPorEstadoReg(provincia, estadoRegistro);
+    }
+    
+
     
 }
