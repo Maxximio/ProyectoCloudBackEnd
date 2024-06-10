@@ -98,5 +98,13 @@ public class UsuariosControllerRestFul {
 	}
 
     //metodo para filtrar los usuarios de una provincia
-    
+    @GetMapping(path = "/prov-reg/{provincia}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Usuarios>> listarPorProvinciaEstadoRegTrue(@PathVariable(name="provincia")String provincia){
+        return new ResponseEntity<>(this.usuariosService.listarCiudadPorEstadoReg(provincia, true),null,HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/prov-noreg/{provincia}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Usuarios>> listarPorProvinciaEstadoRegfalse(@PathVariable(name="provincia")String provincia){
+        return new ResponseEntity<>(this.usuariosService.listarCiudadPorEstadoReg(provincia, false),null,HttpStatus.OK);
+    }
 }

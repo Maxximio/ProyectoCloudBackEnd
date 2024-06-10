@@ -1,4 +1,4 @@
-package com.cloud.backend.project.Config;
+package com.cloud.backend.project.config;
 
 
 import org.springframework.context.annotation.Bean;

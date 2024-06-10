@@ -48,5 +48,12 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		return this.usuariosRepository.actualizar(usuario);
 				
 	}
+
+    @Override
+    public List<Usuarios> listarCiudadPorEstadoReg(String provincia, Boolean estadoRegistro) {
+        return this.usuariosRepository.listarCiudadPorEstadoReg(provincia, estadoRegistro);
+    }
+    
+
     
 }
