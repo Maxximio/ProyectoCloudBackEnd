@@ -28,13 +28,14 @@ public class Roles {
     private String descripcion;
 
     @Column(name = "role_codigo",nullable = false)
-    @Enumerated(EnumType.STRING)
-    private ERol codigo;
+    //@Enumerated(EnumType.STRING)
+    //private ERol codigo;
+    private String codigo;
 
-    public Roles(String descripcion, ERol codigo) {
+    /*public Roles(String descripcion, ERol codigo) {
         this.descripcion=descripcion;
     	this.codigo = codigo;
-    }
+    }*/
 
     @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JsonIgnore
