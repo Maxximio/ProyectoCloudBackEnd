@@ -24,11 +24,15 @@ public class AuthRestFullController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> loginUsuario(@RequestBody LoginRequest loginRequest) {
-        AuthResponse response = authService.loginUsuario(loginRequest);
-        if (response != null) {
-            return ResponseEntity.ok(response);
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        try {
+            AuthResponse response = authService.loginUsuario(loginRequest);
+            if (response != null) {
+                return ResponseEntity.ok(response);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 

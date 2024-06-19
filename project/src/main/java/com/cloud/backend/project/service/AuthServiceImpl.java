@@ -3,6 +3,8 @@ package com.cloud.backend.project.service;
 import java.util.ArrayList;
 import java.util.Set;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +31,10 @@ public class AuthServiceImpl implements IAuthService{
     public AuthResponse loginUsuario(LoginRequest loginRequest) {
         Usuarios usua = this.usuariosRepository.buscarPorEmail(loginRequest.getEmail());
         if(usua!=null && this.encriptionService.verificarEncriptedText(usua.getPassword(),loginRequest.getPassword())){
-            return AuthResponse.builder()
+
+            if(usua.getEstadoRegistro()==true){
+
+                return AuthResponse.builder()
                 .id(usua.getId())
                 .nombres(usua.getNombres())
                 .apellidos(usua.getApellidos())
@@ -46,9 +51,17 @@ public class AuthServiceImpl implements IAuthService{
                 .sexo(usua.getSexo())
                 .telefono(usua.getTelefono())
                 .build();
+
+            }else{
+
+                throw new RuntimeException("El registro del usuario es falso.");
+
+            }
+            
         }
 
         return null;
+        //throw new RuntimeException("Usuario no encontrado o credenciales inválidas.");
     }
 
     @Override
