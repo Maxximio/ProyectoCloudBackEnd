@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cloud.backend.project.repository.modelo.Campeonatos;
 import com.cloud.backend.project.service.ICampeonatosService;
+import com.cloud.backend.project.service.dto.CampeonatosDTO;
 
 @RestController
 @CrossOrigin
@@ -70,6 +71,19 @@ public class CampeonatosController {
         }catch(Exception e){
             return ResponseEntity.badRequest().build();
         }  
+    }
+    
+    
+    /////////////////////////////////////////////////
+    
+    @GetMapping(path = "/dto",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosDto() {
+        try{
+            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosDto(), null, HttpStatus.OK);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+       
     }
 
 }

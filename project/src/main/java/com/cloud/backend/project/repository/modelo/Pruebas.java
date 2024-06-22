@@ -2,6 +2,9 @@ package com.cloud.backend.project.repository.modelo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,19 +35,27 @@ public class Pruebas {
 	@Column(name = "prue_tipo")
 	private String tipo;
 	
+	@Column(name = "prue_categoria")
+	private String categoria;
+	
 	@OneToMany(mappedBy = "pruebas", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Resultados> resultados;
 	
 	@OneToMany(mappedBy = "pruebas", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<CompetidoresPruebas> competidoresPruebas;
 	
 	@OneToMany(mappedBy = "pruebas", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<PruebasCalendariosCompetencias> pruebasCalendariosCompetencias;
 	
 	@OneToMany(mappedBy = "pruebas", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<CampeonatosPruebas> campeonatosPruebas;
 	
 	@OneToMany(mappedBy = "pruebas", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<CategoriasPruebas> categoriasPruebas;
 
 	//SET y GET
@@ -120,7 +131,15 @@ public class Pruebas {
 	public void setCategoriasPruebas(List<CategoriasPruebas> categoriasPruebas) {
 		this.categoriasPruebas = categoriasPruebas;
 	}
-	
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
 }
 
 
