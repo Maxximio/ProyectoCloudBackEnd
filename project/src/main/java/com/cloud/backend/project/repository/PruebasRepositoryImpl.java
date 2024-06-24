@@ -1,5 +1,7 @@
 package com.cloud.backend.project.repository;
 
+import com.cloud.backend.project.repository.modelo.Campeonatos;
+import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.cloud.backend.project.repository.modelo.Pruebas;
@@ -7,6 +9,8 @@ import com.cloud.backend.project.repository.modelo.Pruebas;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+
+import java.util.List;
 
 @Repository
 @Transactional
@@ -57,6 +61,12 @@ public class PruebasRepositoryImpl implements IPruebasRepository{
 			// TODO: handle exception
 			return false;
 		}
+	}
+
+	@Override
+	public List<Pruebas> buscarTodas() {
+		TypedQuery<Pruebas> myQ = this.entityManager.createQuery("SELECT p FROM Pruebas p",Pruebas.class);
+		return myQ.getResultList();
 	}
 
 }

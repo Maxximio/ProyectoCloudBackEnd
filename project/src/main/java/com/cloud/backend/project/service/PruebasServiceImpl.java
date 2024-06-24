@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.cloud.backend.project.repository.IPruebasRepository;
 import com.cloud.backend.project.repository.modelo.Pruebas;
 
+import java.util.List;
+
 @Service
 public class PruebasServiceImpl implements IPruebasService{
 	
@@ -34,6 +36,11 @@ public class PruebasServiceImpl implements IPruebasService{
 	public Boolean eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		return this.pruebasRepository.eliminar(id);
+	}
+
+	@Override
+	public List<Pruebas> buscarTodas() {
+		return this.pruebasRepository.buscarTodas();
 	}
 
 }

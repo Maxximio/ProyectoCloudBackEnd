@@ -1,5 +1,6 @@
 package com.cloud.backend.project.repository.modelo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +31,7 @@ public class CampeonatosPruebas {
 
 	@ManyToOne
 	@JoinColumn(name="camp_id")
+	@JsonBackReference
 	private Campeonatos campeonatos;
 
 	//SET y GET

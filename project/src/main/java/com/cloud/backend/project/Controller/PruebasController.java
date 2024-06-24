@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cloud.backend.project.repository.modelo.Pruebas;
 import com.cloud.backend.project.service.IPruebasService;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/pruebas")
@@ -47,5 +49,9 @@ public class PruebasController {
 		Pruebas pruebas = this.pruebasService.buscarPorId(id);
 		return new ResponseEntity<>(pruebas,null,200);
 	}
-
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Pruebas>> listarPruebas(){
+		List<Pruebas> pruebas = this.pruebasService.buscarTodas();
+		return new ResponseEntity<>(pruebas,null,200);
+	}
 }

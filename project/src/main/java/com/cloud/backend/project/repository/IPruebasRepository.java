@@ -2,6 +2,8 @@ package com.cloud.backend.project.repository;
 
 import com.cloud.backend.project.repository.modelo.Pruebas;
 
+import java.util.List;
+
 public interface IPruebasRepository {
 	
 	public Boolean insertar(Pruebas pruebas);
@@ -11,5 +13,5 @@ public interface IPruebasRepository {
 	public Boolean actualizar(Pruebas pruebas);
 
 	public Boolean eliminar(Integer id);
-
+	public List<Pruebas> buscarTodas();
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,6 +36,10 @@ public class Campeonatos {
 	private String sede;
 	@Column(name = "camp_fecha_inicio")
 	private LocalDate fechaInicio;
+    //
+    @Column(name = "camp_fecha_fin")
+    private LocalDate fechaFin;
+    //
 	@Column(name = "camp_inscripcion_inicio")
 	private LocalDate inscripcionInicio;
 	@Column(name = "camp_inscripcion_fin")
@@ -45,7 +50,7 @@ public class Campeonatos {
     private List<PreciosInscripciones> preciosInscripciones;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonManagedReference
     private List<CampeonatosPruebas> campeonatosPruebas;
 
     @OneToMany(mappedBy = "campeonatos",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
