@@ -105,8 +105,18 @@ public class Campeonatos {
     public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
+    
+    
 
-    public LocalDate getInscripcionInicio() {
+    public LocalDate getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public LocalDate getInscripcionInicio() {
         return inscripcionInicio;
     }
 

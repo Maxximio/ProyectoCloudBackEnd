@@ -1,8 +1,6 @@
 package com.cloud.backend.project.repository.modelo;
-
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.*;
 
 @Data
