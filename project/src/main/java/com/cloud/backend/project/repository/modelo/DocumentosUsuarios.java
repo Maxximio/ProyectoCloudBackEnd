@@ -28,6 +28,9 @@ public class DocumentosUsuarios {
     @ManyToOne
     @JoinColumn(name = "usua_id")
     private Usuarios usuarios;
+
+	@Column(name = "dous_tipo")
+    private String tipo;
     
   //get y set
 
@@ -67,7 +70,12 @@ public class DocumentosUsuarios {
 		this.usuarios = usuarios;
 	}
 
-    
+	public String getTipo() {
+		return tipo;
+	}
 
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
     
 }
