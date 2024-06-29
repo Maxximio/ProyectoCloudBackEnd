@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException.BadRequest;
 
 import com.cloud.backend.project.repository.modelo.Campeonatos;
 import com.cloud.backend.project.service.ICampeonatosService;
 import com.cloud.backend.project.service.dto.CampeonatosDTO;
+import com.cloud.backend.project.service.dto.PruebasDTO;
 
 @RestController
 @CrossOrigin
@@ -85,6 +87,14 @@ public class CampeonatosController {
             return ResponseEntity.badRequest().build();
         }
        
+    }
+
+    @PutMapping(path = "/{idCampeonato}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> agregarPruebas(@PathVariable(name = "idCampeonato")Integer idCampeonato, @RequestBody List<PruebasDTO> listaIdsPrueba){
+       for (PruebasDTO pruebasDTO : listaIdsPrueba) {
+        System.out.println(pruebasDTO.getId());
+       }
+        return ResponseEntity.status(this.campeonatosService.agregarPruebas(idCampeonato, listaIdsPrueba)?HttpStatus.OK:HttpStatus.BAD_REQUEST).build();
     }
 
 }

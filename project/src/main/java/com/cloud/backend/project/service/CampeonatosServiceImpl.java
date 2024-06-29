@@ -1,6 +1,6 @@
 package com.cloud.backend.project.service;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 
 import com.cloud.backend.project.repository.ICampeonatosRepo;
+import com.cloud.backend.project.repository.IPruebasRepository;
 import com.cloud.backend.project.repository.modelo.Campeonatos;
 import com.cloud.backend.project.repository.modelo.CampeonatosPruebas;
 import com.cloud.backend.project.service.dto.CampeonatosDTO;
@@ -20,6 +21,9 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
 
     @Autowired
     private ICampeonatosRepo campeonatosRepo;
+
+    @Autowired
+    private IPruebasRepository pruebasRepository;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -57,23 +61,61 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
 		// TODO Auto-generated method stub
 		return campeonatosRepo.listarCampeonatos().stream().map(this::convertToDto).collect(Collectors.toList());
 	}
-	
-	private CampeonatosDTO convertToDto(Campeonatos campeonato) {
-        CampeonatosDTO dto = new CampeonatosDTO();
-        dto.setId(campeonato.getId());
-        dto.setNombre(campeonato.getNombre());
-        dto.setOrganizador(campeonato.getOrganizador());
-        dto.setSede(campeonato.getSede());
-        dto.setFechaInicio(campeonato.getFechaInicio());
-        dto.setInscripcionInicio(campeonato.getInscripcionInicio());
-        dto.setInscripcionFin(campeonato.getInscripcionFin());
+
+	@Override
+    public Boolean agregarPruebas(Integer idCampeonato, List<PruebasDTO> pruebasDTO) {
+        Boolean flag = false;
+
+    if (idCampeonato != null && !pruebasDTO.isEmpty()) {
+        Campeonatos campeonatos = this.campeonatosRepo.buscarPorId(idCampeonato);
+
+        List<CampeonatosPruebas> existingPruebas = campeonatos.getCampeonatosPruebas();
+        
+        Set<Integer> existingPruebaIds = existingPruebas.stream()
+                .map(cp -> cp.getPruebas().getId())
+                .collect(Collectors.toSet());
+        
+        List<CampeonatosPruebas> listCamP = new ArrayList<>();
+        CampeonatosPruebas campP;
+        
+        for (PruebasDTO p : pruebasDTO) {
+            // Verificar si la prueba ya está asignada
+            if (!existingPruebaIds.contains(p.getId())) {
+                campP = new CampeonatosPruebas();
+                campP.setCampeonatos(campeonatos);
+                campP.setPruebas(this.pruebasRepository.buscarPorId(p.getId()));
+                listCamP.add(campP);
+            }
+        }
+        
+        if (!listCamP.isEmpty()) {         
+            campeonatos.setCampeonatosPruebas(listCamP);
+            this.campeonatosRepo.actualizarCampeonatos(campeonatos);
+            flag = true;
+        }
+    }
+    return flag;
+    }
+
+    private CampeonatosDTO convertToDto(Campeonatos campeonato) {
 
         List<PruebasDTO> pruebas = campeonato.getCampeonatosPruebas().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
-        dto.setPruebas(pruebas);
+                
 
-        return dto;
+        return CampeonatosDTO.builder()
+        .id(campeonato.getId())
+        .nombre(campeonato.getNombre())
+        .organizador(campeonato.getOrganizador())
+        .sede(campeonato.getSede())
+        .fechaInicio(campeonato.getFechaInicio())
+        .inscripcionInicio(campeonato.getInscripcionInicio())
+        .inscripcionFin(campeonato.getInscripcionFin())
+        .pruebas(pruebas)
+        .build();
+
+        
     }
 	
 	private PruebasDTO convertToDto(CampeonatosPruebas campeonatosPruebas) {

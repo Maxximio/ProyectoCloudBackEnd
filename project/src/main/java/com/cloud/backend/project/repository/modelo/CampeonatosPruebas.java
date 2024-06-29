@@ -34,7 +34,8 @@ public class CampeonatosPruebas {
 	@JsonBackReference
 	private Campeonatos campeonatos;
 
-	//SET y GET
+
+	//Getters and Setters
 	public Integer getId() {
 		return id;
 	}
@@ -58,5 +59,16 @@ public class CampeonatosPruebas {
 	public void setPruebas(Pruebas pruebas) {
 		this.pruebas = pruebas;
 	}
+
+	public Campeonatos getCampeonatos() {
+		return campeonatos;
+	}
+
+	public void setCampeonatos(Campeonatos campeonatos) {
+		this.campeonatos = campeonatos;
+	}
+
+	//SET y GET
+	
 
 }

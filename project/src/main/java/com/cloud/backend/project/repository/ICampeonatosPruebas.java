@@ -1,6 +1,7 @@
 package com.cloud.backend.project.repository;
 
 import com.cloud.backend.project.repository.modelo.CampeonatosPruebas;
+import java.util.*;
 
 public interface ICampeonatosPruebas {
 	

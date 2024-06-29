@@ -6,17 +6,13 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name="campeonatos")
 public class Campeonatos {
@@ -66,110 +62,5 @@ public class Campeonatos {
     private List<AsociacionesDeportivasCampeonatos> asociacionesDeportivasCampeonatos;
 
     //Getters and Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getOrganizador() {
-        return organizador;
-    }
-
-    public void setOrganizador(String organizador) {
-        this.organizador = organizador;
-    }
-
-    public String getSede() {
-        return sede;
-    }
-
-    public void setSede(String sede) {
-        this.sede = sede;
-    }
-
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
     
-    
-
-    public LocalDate getFechaFin() {
-		return fechaFin;
-	}
-
-	public void setFechaFin(LocalDate fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
-	public LocalDate getInscripcionInicio() {
-        return inscripcionInicio;
-    }
-
-    public void setInscripcionInicio(LocalDate inscripcionInicio) {
-        this.inscripcionInicio = inscripcionInicio;
-    }
-
-    public LocalDate getInscripcionFin() {
-        return inscripcionFin;
-    }
-
-    public void setInscripcionFin(LocalDate inscripcionFin) {
-        this.inscripcionFin = inscripcionFin;
-    }
-
-    public List<PreciosInscripciones> getPreciosInscripciones() {
-        return preciosInscripciones;
-    }
-
-    public void setPreciosInscripciones(List<PreciosInscripciones> preciosInscripciones) {
-        this.preciosInscripciones = preciosInscripciones;
-    }
-
-    public List<CampeonatosPruebas> getCampeonatosPruebas() {
-        return campeonatosPruebas;
-    }
-
-    public void setCampeonatosPruebas(List<CampeonatosPruebas> campeonatosPruebas) {
-        this.campeonatosPruebas = campeonatosPruebas;
-    }
-
-    public List<CalendariosCompetencias> getCalendariosCompetencias() {
-        return calendariosCompetencias;
-    }
-
-    public void setCalendariosCompetencias(List<CalendariosCompetencias> calendariosCompetencias) {
-        this.calendariosCompetencias = calendariosCompetencias;
-    }
-
-    public List<CampeonatosCompetidores> getCampeonatosCompetidores() {
-        return campeonatosCompetidores;
-    }
-
-    public void setCampeonatosCompetidores(List<CampeonatosCompetidores> campeonatosCompetidores) {
-        this.campeonatosCompetidores = campeonatosCompetidores;
-    }
-
-    public List<AsociacionesDeportivasCampeonatos> getAsociacionesDeportivasCampeonatos() {
-        return asociacionesDeportivasCampeonatos;
-    }
-
-    public void setAsociacionesDeportivasCampeonatos(
-            List<AsociacionesDeportivasCampeonatos> asociacionesDeportivasCampeonatos) {
-        this.asociacionesDeportivasCampeonatos = asociacionesDeportivasCampeonatos;
-    } 
 }

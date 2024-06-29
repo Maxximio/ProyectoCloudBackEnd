@@ -6,7 +6,10 @@ import com.cloud.backend.project.repository.modelo.CampeonatosPruebas;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+
+import java.util.*;
 
 @Repository
 @Transactional
