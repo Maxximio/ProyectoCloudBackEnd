@@ -2,6 +2,7 @@ package com.cloud.backend.project.repository;
 
 import java.util.List;
 
+import com.cloud.backend.project.repository.modelo.DocumentosUsuarios;
 import com.cloud.backend.project.repository.modelo.Usuarios;
 
 public interface IUsuariosRepository {
@@ -17,5 +18,7 @@ public interface IUsuariosRepository {
     public boolean existeUsuarioConEmail(String email) ;
 
     public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro);
+    public List<Usuarios> listarCiudadPorTipoDocumento(String provincia,Boolean estado, String tipoDoc);
+
 
 }

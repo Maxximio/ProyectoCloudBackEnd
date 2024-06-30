@@ -94,13 +94,37 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
     @Override
     public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro) {
         TypedQuery<Usuarios> myQ = this.entityManager.createQuery("SELECT u FROM Usuarios u WHERE u.ciudad=:provincia AND u.estadoRegistro=:estadoRegistro",Usuarios.class);
-            try {
-                  myQ.setParameter("estadoRegistro", estadoRegistro).setParameter("provincia", provincia);
-                  return myQ.getResultList();        
-            } catch (Exception e) {
-                return new ArrayList<>();
+        try {
+            myQ.setParameter("estadoRegistro", estadoRegistro).setParameter("provincia", provincia);
+            return myQ.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+
+    }
+
+    @Override
+    public List<Usuarios> listarCiudadPorTipoDocumento(String provincia,Boolean estado, String tipoDoc) {
+        try {
+            String sql = "SELECT u FROM Usuarios u, DocumentosUsuarios d " +
+                    "WHERE u.ciudad = :provincia " +
+                    "AND d.usuarios.id = u.id AND d.tipo = :tipoDoc";
+
+            if ("Socio".equals(tipoDoc)) {
+                sql += " AND u.estado = :estado";
             }
-        
+            TypedQuery<Usuarios> myQ = this.entityManager.createQuery(sql
+                    , Usuarios.class);
+            myQ.setParameter("provincia", provincia);
+            if ("Socio".equals(tipoDoc)) {
+                myQ.setParameter("estado", estado);
+            }
+            myQ.setParameter("tipoDoc", tipoDoc);
+            return myQ.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+
     }
 
 }

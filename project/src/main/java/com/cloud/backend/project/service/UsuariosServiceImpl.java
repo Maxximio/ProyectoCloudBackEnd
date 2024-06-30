@@ -63,7 +63,11 @@ public class UsuariosServiceImpl implements IUsuariosService{
     public List<Usuarios> listarCiudadPorEstadoReg(String provincia, Boolean estadoRegistro) {
         return this.usuariosRepository.listarCiudadPorEstadoReg(provincia, estadoRegistro);
     }
-    
 
-    
+    @Override
+    public List<Usuarios> listarCiudadPorTipoDocumento(String provincia, Boolean estado, String tipoDoc) {
+        return this.usuariosRepository.listarCiudadPorTipoDocumento(provincia, estado, tipoDoc);
+    }
+
+
 }

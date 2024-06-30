@@ -104,4 +104,9 @@ public class UsuariosControllerRestFul {
     public ResponseEntity<List<Usuarios>> listarPorProvinciaEstadoRegfalse(@PathVariable(name="provincia")String provincia){
         return new ResponseEntity<>(this.usuariosService.listarCiudadPorEstadoReg(provincia, false),null,HttpStatus.OK);
     }
+
+    @GetMapping(path = "/tipoD/{provincia}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Usuarios>> listarPorProvinciaPorTipoDoc(@PathVariable(name="provincia")String provincia,@RequestParam String tipo, @RequestParam Boolean estado){
+        return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(provincia, estado, tipo),null,HttpStatus.OK);
+    }
 }

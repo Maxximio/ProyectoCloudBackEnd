@@ -64,7 +64,7 @@ public class DocumentosUsuariosController {
 	public ResponseEntity<List<DocumentosUsuarios>>buscarDocumentosPorUsuarioId(@PathVariable Integer id) {
 		return new ResponseEntity<>(this.documetosUsuariosService.buscarDocumentosDeUsuarioDadoId(id),null,200);
 	}
-    
+
 	//metodo para generar la lista de atletas no aceptados (estado registro false) por provincia.
 	
 }

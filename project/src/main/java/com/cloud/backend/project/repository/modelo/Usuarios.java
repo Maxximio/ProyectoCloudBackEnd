@@ -1,6 +1,8 @@
 package com.cloud.backend.project.repository.modelo;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDate;
 import java.util.*;
 
 @Data
@@ -59,6 +61,9 @@ public class Usuarios {
 
     @Column(name = "usua_estado_reg")
     private Boolean estadoRegistro;
+
+    @Column(name = "usua_fecha_suscripción")
+    private Date fechaSuscripción;
 
     /*@ManyToMany(fetch = FetchType.EAGER, targetEntity = Roles.class,cascade = CascadeType.PERSIST)
 	@JoinTable(name="usua_roles", joinColumns=@JoinColumn(name="usua_id"),inverseJoinColumns=@JoinColumn(name="role_id"))

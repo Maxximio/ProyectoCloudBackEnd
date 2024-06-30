@@ -39,5 +39,4 @@ public class DocumentosUsuariosServiceImpl implements IDocumetosUsuariosService{
         return this.documentosUsuariosRepo.buscarDocumentosDeUsuarioDadoId(id);
     }
 
-
 }

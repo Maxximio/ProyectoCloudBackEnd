@@ -13,5 +13,4 @@ public interface IDocumentosUsuariosRepo {
 
     public List<DocumentosUsuarios> buscarDocumentosDeUsuarioDadoId(Integer id);
 
-
 }
