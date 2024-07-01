@@ -62,7 +62,7 @@ public class Usuarios {
     @Column(name = "usua_estado_reg")
     private Boolean estadoRegistro;
 
-    @Column(name = "usua_fecha_suscripción")
+    @Column(name = "usua_fecha_suscripcion")
     private Date fechaSuscripción;
 
     /*@ManyToMany(fetch = FetchType.EAGER, targetEntity = Roles.class,cascade = CascadeType.PERSIST)
