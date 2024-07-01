@@ -39,6 +39,11 @@ public class UsuariosServiceImpl implements IUsuariosService{
         return this.usuariosRepository.buscarTodosUsuarios();
     }
 
+    @Override
+    public List<Usuarios> buscarTodosUsuariosAdmin() {
+        return this.usuariosRepository.buscarTodosUsuariosAdmin();
+    }
+
 	@Override
 	public Boolean cambioEstado(Integer id) {
 		Usuarios usuario= this.usuariosRepository.buscarPorId(id);

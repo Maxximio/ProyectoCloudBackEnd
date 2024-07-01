@@ -10,6 +10,8 @@ public interface ICampeonatosRepo {
 
     List<Campeonatos> listarCampeonatos();
 
+    List<Campeonatos> listarCampeonatosProvincia(String provincia);
+
     Campeonatos buscarPorId(Integer id);
 
     Boolean actualizarCampeonatos(Campeonatos campeonatos);

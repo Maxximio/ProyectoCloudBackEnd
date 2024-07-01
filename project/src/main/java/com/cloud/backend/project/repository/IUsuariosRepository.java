@@ -13,6 +13,8 @@ public interface IUsuariosRepository {
     public Boolean eliminar(Integer id);
     public List<Usuarios> buscarTodosUsuarios();
 
+    public List<Usuarios> buscarTodosUsuariosAdmin();
+
     public Usuarios buscarPorEmail(String email);
 
     public boolean existeUsuarioConEmail(String email) ;

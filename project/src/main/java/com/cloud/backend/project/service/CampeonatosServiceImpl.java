@@ -128,4 +128,9 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
         return dto;
     }
 
+    @Override
+    public List<CampeonatosDTO> listarCampeonatosProvincia(String provincia) {
+        return campeonatosRepo.listarCampeonatosProvincia(provincia).stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
 }

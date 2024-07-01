@@ -76,5 +76,12 @@ public class CampeonatosRepoImpl implements ICampeonatosRepo{
         return myQ.getResultList();
     }
 
+    @Override
+public List<Campeonatos> listarCampeonatosProvincia(String provincia) {
+    TypedQuery<Campeonatos> myQ = this.em.createQuery("SELECT c FROM Campeonatos c WHERE c.camp_sede = :provincia", Campeonatos.class);
+    myQ.setParameter("provincia", provincia);
+    return myQ.getResultList();
+}
+
 
 }

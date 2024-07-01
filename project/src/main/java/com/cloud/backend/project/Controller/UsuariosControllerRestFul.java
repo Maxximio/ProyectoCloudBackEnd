@@ -111,4 +111,11 @@ public class UsuariosControllerRestFul {
 
         return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(tipo.getEstado(), tipo.getTipo()),null,HttpStatus.OK);
     }
+
+    /////////////////////administradores//////////////////////
+    @GetMapping(path = "/admins",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Usuarios>> listarUsuariosAdmin(){
+        return new ResponseEntity<>(this.usuariosService.buscarTodosUsuariosAdmin(),null,HttpStatus.OK);
+    }
+
 }

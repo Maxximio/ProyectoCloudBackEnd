@@ -37,6 +37,9 @@ public class Pruebas {
 	
 	@Column(name = "prue_categoria")
 	private String categoria;
+
+	@Column(name = "prue_combinada")
+	private Boolean pruebasCombinadas;
 	
 	@OneToMany(mappedBy = "pruebas", cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -138,6 +141,14 @@ public class Pruebas {
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+
+	public Boolean getPruebasCombinadas() {
+		return pruebasCombinadas;
+	}
+
+	public void setPruebasCombinadas(Boolean pruebasCombinadas) {
+		this.pruebasCombinadas = pruebasCombinadas;
 	}
 
 }

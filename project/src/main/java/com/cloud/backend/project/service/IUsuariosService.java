@@ -14,6 +14,8 @@ public interface IUsuariosService {
 
     public List<Usuarios> buscarTodosUsuarios();
     
+    public List<Usuarios> buscarTodosUsuariosAdmin();
+    
     public Boolean cambioEstado(Integer id) ;
     public Boolean cambioEstado(Integer id,String nuevoEstado) ;
 

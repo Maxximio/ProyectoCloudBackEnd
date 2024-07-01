@@ -20,6 +20,8 @@ public interface ICampeonatosService {
     
     List<CampeonatosDTO> listarCampeonatosDto();
 
+    List<CampeonatosDTO> listarCampeonatosProvincia(String provincia);
+
     Boolean agregarPruebas(Integer idCampeonato, List<PruebasDTO> pruebasDTO);
 
 }

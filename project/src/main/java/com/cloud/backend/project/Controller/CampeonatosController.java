@@ -97,4 +97,17 @@ public class CampeonatosController {
         return ResponseEntity.status(this.campeonatosService.agregarPruebas(idCampeonato, listaIdsPrueba)?HttpStatus.OK:HttpStatus.BAD_REQUEST).build();
     }
 
+    //////////////////////filtrado/////////////////////////
+
+    @GetMapping(path = "/dto/{provincia}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosProvinciaDto(@PathVariable String provincia) {
+        try{
+            return new ResponseEntity<>(this.campeonatosService.listarCampeonatosProvincia(provincia), null, HttpStatus.OK);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+       
+    }
+
+
 }

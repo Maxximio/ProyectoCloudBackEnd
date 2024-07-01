@@ -129,4 +129,16 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
 
     }
 
+    @Override
+    public List<Usuarios> buscarTodosUsuariosAdmin() {
+        TypedQuery<Usuarios> myQ = this.entityManager.createQuery("SELECT u FROM Usuarios u WHERE u.roles.id = :roleId", Usuarios.class);
+        myQ.setParameter("roleId", 1);//id de roles 1
+        try {
+           return myQ.getResultList();
+        } catch (Exception e) {
+           e.printStackTrace();
+           return new ArrayList<>();
+        }
+    }
+
 }
