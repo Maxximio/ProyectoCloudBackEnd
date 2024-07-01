@@ -18,6 +18,7 @@ public interface IUsuariosService {
     public Boolean cambioEstado(Integer id,String nuevoEstado) ;
 
     public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro);
+
     public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc);
 
 }

@@ -108,6 +108,7 @@ public class UsuariosControllerRestFul {
 
     @GetMapping(path = "/tipoD",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UsuarioDTO>> listarPorProvinciaPorTipoDoc(@RequestBody ConsultaTipoDocDTO tipo){
+
         return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(tipo.getEstado(), tipo.getTipo()),null,HttpStatus.OK);
     }
 }

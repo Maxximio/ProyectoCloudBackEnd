@@ -103,6 +103,7 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
 
     }
 
+
     @Override
     public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc) {
 

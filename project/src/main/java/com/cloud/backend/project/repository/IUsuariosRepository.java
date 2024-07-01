@@ -18,6 +18,7 @@ public interface IUsuariosRepository {
     public boolean existeUsuarioConEmail(String email) ;
 
     public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro);
+
     public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc);
 
 }
