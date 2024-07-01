@@ -1,16 +1,16 @@
 package com.cloud.backend.project.repository;
 
 import com.cloud.backend.project.repository.modelo.Usuarios;
+import com.cloud.backend.project.service.dto.UsuarioDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
@@ -104,23 +104,24 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
     }
 
     @Override
-    public List<Usuarios> listarCiudadPorTipoDocumento(String provincia,Boolean estado, String tipoDoc) {
+    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc) {
+
         try {
-            String sql = "SELECT u FROM Usuarios u, DocumentosUsuarios d " +
-                    "WHERE u.ciudad = :provincia " +
-                    "AND d.usuarios.id = u.id AND d.tipo = :tipoDoc";
+            String sql = "SELECT new UsuarioDTO(u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, u.estado, u.fechaSuscripción, d) " +
+                    "FROM DocumentosUsuarios d JOIN d.usuarios u WHERE d.tipo = :tipoDoc";
 
             if ("Socio".equals(tipoDoc)) {
                 sql += " AND u.estado = :estado";
             }
-            TypedQuery<Usuarios> myQ = this.entityManager.createQuery(sql
-                    , Usuarios.class);
-            myQ.setParameter("provincia", provincia);
+            TypedQuery<UsuarioDTO> myQ = this.entityManager.createQuery(sql
+                    , UsuarioDTO.class);
+
             if ("Socio".equals(tipoDoc)) {
                 myQ.setParameter("estado", estado);
             }
             myQ.setParameter("tipoDoc", tipoDoc);
             return myQ.getResultList();
+
         } catch (Exception e) {
             return new ArrayList<>();
         }

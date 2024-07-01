@@ -1,18 +1,19 @@
 package com.cloud.backend.project.Controller;
 
-import java.util.List;
-
+import com.cloud.backend.project.repository.modelo.DocumentosUsuarios;
+import com.cloud.backend.project.repository.modelo.Usuarios;
+import com.cloud.backend.project.service.IDocumetosUsuariosService;
+import com.cloud.backend.project.service.IRolesService;
+import com.cloud.backend.project.service.IUsuariosService;
+import com.cloud.backend.project.service.dto.ConsultaTipoDocDTO;
+import com.cloud.backend.project.service.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.cloud.backend.project.repository.modelo.DocumentosUsuarios;
-import com.cloud.backend.project.repository.modelo.Usuarios;
-import com.cloud.backend.project.service.IDocumetosUsuariosService;
-import com.cloud.backend.project.service.IRolesService;
-import com.cloud.backend.project.service.IUsuariosService;
+import java.util.List;
 
 //Importacion estática
 //import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -105,8 +106,8 @@ public class UsuariosControllerRestFul {
         return new ResponseEntity<>(this.usuariosService.listarCiudadPorEstadoReg(provincia, false),null,HttpStatus.OK);
     }
 
-    @GetMapping(path = "/tipoD/{provincia}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Usuarios>> listarPorProvinciaPorTipoDoc(@PathVariable(name="provincia")String provincia,@RequestParam String tipo, @RequestParam Boolean estado){
-        return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(provincia, estado, tipo),null,HttpStatus.OK);
+    @GetMapping(path = "/tipoD",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<UsuarioDTO>> listarPorProvinciaPorTipoDoc(@RequestBody ConsultaTipoDocDTO tipo){
+        return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(tipo.getEstado(), tipo.getTipo()),null,HttpStatus.OK);
     }
 }
