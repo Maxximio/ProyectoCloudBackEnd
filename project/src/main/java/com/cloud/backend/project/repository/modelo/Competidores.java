@@ -48,6 +48,10 @@ public class Competidores {
 
     @OneToMany(mappedBy = "competidores",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<CompetidoresPruebas> competidoresPruebas;
+    
+
+    @OneToMany(mappedBy = "competidores",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<CampeonatosPruebasCompetidores> campeonatosPruebasCompetidores;
 
     /*//to string
     @Override

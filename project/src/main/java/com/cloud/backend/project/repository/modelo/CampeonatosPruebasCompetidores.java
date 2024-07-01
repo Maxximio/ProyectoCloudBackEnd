@@ -15,12 +15,10 @@ public class CampeonatosPruebasCompetidores {
 
     @ManyToOne
 	@JoinColumn(name = "camp_prue_id")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private CampeonatosPruebas campeonatosPruebas;
 
     @ManyToOne
 	@JoinColumn(name = "comp_id")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private Competidores competidores;
 
     public Integer getId() {
