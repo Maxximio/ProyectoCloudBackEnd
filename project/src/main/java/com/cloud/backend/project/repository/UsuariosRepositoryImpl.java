@@ -114,10 +114,13 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
             if ("Socio".equals(tipoDoc)) {
                 sql += " AND u.estado = :estado";
             }
+            if ("Registro".equals(tipoDoc)) {
+                sql += " AND u.estadoRegistro = :estado";
+            }
             TypedQuery<UsuarioDTO> myQ = this.entityManager.createQuery(sql
                     , UsuarioDTO.class);
 
-            if ("Socio".equals(tipoDoc)) {
+            if ("Socio".equals(tipoDoc) || "Registro".equals(tipoDoc)) {
                 myQ.setParameter("estado", estado);
             }
             myQ.setParameter("tipoDoc", tipoDoc);
