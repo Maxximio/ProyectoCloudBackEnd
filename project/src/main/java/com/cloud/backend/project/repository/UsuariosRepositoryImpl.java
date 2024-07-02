@@ -108,7 +108,7 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
     public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc) {
 
         try {
-            String sql = "SELECT new UsuarioDTO(u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, u.estado, u.fechaSuscripción, d) " +
+            String sql = "SELECT new UsuarioDTO(u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, u.estado, u.fechaSuscripción, d) " +
                     "FROM DocumentosUsuarios d JOIN d.usuarios u WHERE d.tipo = :tipoDoc";
 
             if ("Socio".equals(tipoDoc)) {

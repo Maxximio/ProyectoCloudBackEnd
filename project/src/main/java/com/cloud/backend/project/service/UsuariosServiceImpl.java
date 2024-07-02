@@ -6,6 +6,9 @@ import com.cloud.backend.project.service.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -53,6 +56,23 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		return this.usuariosRepository.actualizar(usuario);
 				
 	}
+
+    public Boolean cambioEstadoSocio(Integer id) {
+        Usuarios usuario= this.usuariosRepository.buscarPorId(id);
+
+        usuario.setEstado(!usuario.getEstado());
+        // Agregar un año a la fecha actual
+        LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaEnUnAno = fechaActual.plus(1, ChronoUnit.YEARS);
+
+        // Convertir LocalDate a Date
+        Date fechaSuscripcion = java.sql.Date.valueOf(fechaEnUnAno);
+
+        usuario.setFechaSuscripción(fechaSuscripcion);
+
+        return this.usuariosRepository.actualizar(usuario);
+
+    }
 
     @Override
     public Boolean cambioEstado(Integer id, String nuevoEstado) {

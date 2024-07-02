@@ -89,6 +89,10 @@ public class UsuariosControllerRestFul {
 	public ResponseEntity<Boolean> actualizarEstado(@PathVariable Integer id) {
         return new ResponseEntity<>(this.usuariosService.cambioEstado(id), null, HttpStatus.OK);
 	}
+    @PutMapping(path = "/estadoSocio/{id}")
+    public ResponseEntity<Boolean> actualizarEstadoSocio(@PathVariable Integer id) {
+        return new ResponseEntity<>(this.usuariosService.cambioEstadoSocio(id), null, HttpStatus.OK);
+    }
 
     @PutMapping(path = "/estado/valor/{id}")
     public ResponseEntity<Boolean> actualizarEstadoPorValor(@PathVariable Integer id,@RequestParam String valor) {

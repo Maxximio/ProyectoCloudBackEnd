@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class UsuarioDTO {
+    private  Integer id;
     private String nombres;
     private String apellidos;
     private String ciudad;
