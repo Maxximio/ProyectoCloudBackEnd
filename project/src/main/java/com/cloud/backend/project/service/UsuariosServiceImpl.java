@@ -90,8 +90,8 @@ public class UsuariosServiceImpl implements IUsuariosService{
 
 
     @Override
-    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc) {
-        return this.usuariosRepository.listarCiudadPorTipoDocumento(estado, tipoDoc);
+    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia) {
+        return this.usuariosRepository.listarCiudadPorTipoDocumento(estado, tipoDoc, provincia);
     }
 
 

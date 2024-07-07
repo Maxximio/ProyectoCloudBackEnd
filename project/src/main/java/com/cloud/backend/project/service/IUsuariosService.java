@@ -22,6 +22,6 @@ public interface IUsuariosService {
 
     public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro);
 
-    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc);
+    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia);
 
 }

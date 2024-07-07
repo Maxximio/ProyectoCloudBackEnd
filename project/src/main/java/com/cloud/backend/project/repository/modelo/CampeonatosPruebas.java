@@ -42,7 +42,7 @@ public class CampeonatosPruebas {
 	private Campeonatos campeonatos;
 	
     @OneToMany(mappedBy = "campeonatosPruebas",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JsonManagedReference
+    //@JsonManagedReference
     private List<CampeonatosPruebasCompetidores> campeonatosPruebasCompetidores;
 
 

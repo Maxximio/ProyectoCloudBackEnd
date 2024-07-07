@@ -47,7 +47,7 @@ public class AuthServiceImpl implements IAuthService{
                 .contactoTelefono(usua.getContactoTelefono())
                 .direccion(usua.getDireccion())
                 .roles(usua.getRoles())
-                //.roles(new ArrayList<Roles>(usua.getRoles()))
+                .fechaSuscripcion(usua.getFechaSuscripción())
                 .sexo(usua.getSexo())
                 .telefono(usua.getTelefono())
                 .build();
@@ -57,7 +57,7 @@ public class AuthServiceImpl implements IAuthService{
                 throw new RuntimeException("El registro del usuario es falso.");
 
             }
-            
+
         }
 
         return null;
@@ -67,7 +67,7 @@ public class AuthServiceImpl implements IAuthService{
     @Override
     public Integer registroUsuarioAtleta(RegistroRequest registroRequest) {
         var flag=0;
-        if(registroRequest.getEmail()!=null && !registroRequest.getEmail().isEmpty() 
+        if(registroRequest.getEmail()!=null && !registroRequest.getEmail().isEmpty()
          && registroRequest.getPassword()!=null && !registroRequest.getPassword().isEmpty()){
                if(!this.usuariosRepository.existeUsuarioConEmail(registroRequest.getEmail())){
                 try{
@@ -103,6 +103,6 @@ public class AuthServiceImpl implements IAuthService{
     }
 
 
-    
+
 
 }

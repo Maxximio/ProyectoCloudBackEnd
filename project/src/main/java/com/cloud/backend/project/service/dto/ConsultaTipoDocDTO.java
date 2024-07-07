@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class ConsultaTipoDocDTO {
     private String tipo;
     private Boolean estado;
+    private String ciudad;
 }

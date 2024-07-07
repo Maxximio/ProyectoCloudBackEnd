@@ -110,6 +110,7 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
         .organizador(campeonato.getOrganizador())
         .sede(campeonato.getSede())
         .fechaInicio(campeonato.getFechaInicio())
+                .fechaFin(campeonato.getFechaFin())
         .inscripcionInicio(campeonato.getInscripcionInicio())
         .inscripcionFin(campeonato.getInscripcionFin())
         .pruebas(pruebas)
