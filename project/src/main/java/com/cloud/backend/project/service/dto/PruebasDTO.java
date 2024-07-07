@@ -24,6 +24,7 @@ public class PruebasDTO {
     private String nombre;
     private Integer intentos;
     private String tipo;
+    private String descripcion;
     private String categoria;
     
 }

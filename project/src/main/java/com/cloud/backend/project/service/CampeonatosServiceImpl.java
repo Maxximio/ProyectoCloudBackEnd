@@ -123,7 +123,7 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
         PruebasDTO dto = new PruebasDTO();
         dto.setId(campeonatosPruebas.getPruebas().getId());
         dto.setNombre(campeonatosPruebas.getPruebas().getNombre());
-        dto.setIntentos(campeonatosPruebas.getPruebas().getIntentos());
+        dto.setDescripcion(campeonatosPruebas.getPruebas().getDescripcion());
         dto.setTipo(campeonatosPruebas.getPruebas().getTipo());
         dto.setCategoria(campeonatosPruebas.getPruebas().getCategoria());
         return dto;
