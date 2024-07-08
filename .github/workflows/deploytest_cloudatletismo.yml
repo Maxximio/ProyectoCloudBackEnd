@@ -43,7 +43,7 @@ jobs:
           name: java-app
       
       - name: Login to Azure
-        uses: azure/login@v1.4
+        uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
@@ -56,5 +56,6 @@ jobs:
           app-name: 'atletismo'
           slot-name: 'Production'
           package: '*.jar'
+
 
           
