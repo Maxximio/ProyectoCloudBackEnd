@@ -2,10 +2,11 @@ package com.cloud.backend.project.repository.modelo;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "campeonatos_pruebas_competidores")
-public class CampeonatosPruebasCompetidores {
+public class CampeonatosPruebasCompetidores extends RepresentationModel<CampeonatosPruebasCompetidores> {
     
     @Id
 	@Column(name = "camp_prco_id")

@@ -44,6 +44,11 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
     }
 
     @Override
+    public CampeonatosDTO buscarPorIdDto(Integer id) {
+        return this.convertToDto(this.campeonatosRepo.buscarPorId(id));
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Boolean guarCampeonatos(Campeonatos campeonatos) {
         return this.campeonatosRepo.guarCampeonatos(campeonatos);

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class UsuarioDTO {
     private Character sexo;
     private Boolean estado;
     private Date fechaSuscripción;
-    private DocumentosUsuarios documento;
+    private List<DocumentosUsuarios> documento;
 
 
 }

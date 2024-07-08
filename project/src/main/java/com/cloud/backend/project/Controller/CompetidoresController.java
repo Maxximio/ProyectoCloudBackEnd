@@ -1,5 +1,6 @@
 package com.cloud.backend.project.Controller;
 
+import com.cloud.backend.project.service.dto.CompetidoresDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cloud.backend.project.repository.modelo.Competidores;
 import com.cloud.backend.project.service.ICompetidoresService;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -46,17 +49,17 @@ public class CompetidoresController {
     }
     
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Competidores> consultarCompetidorPorId(@PathVariable Integer id) {
-        Competidores competidor =  this.competidoresService.buscarPorId(id);
+    public ResponseEntity<CompetidoresDTO> consultarCompetidorPorId(@PathVariable Integer id) {
+        CompetidoresDTO competidor =  this.competidoresService.buscarPorIdDto(id);
 
         return new ResponseEntity<>(competidor, null, 200);
     }
 
     
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<List<Competidores>> consultarCampeonatos() {
-//        return new ResponseEntity<>(this.competidoresService.listarCompetidores(), null, 200);
-//    }
+   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Competidores>> consultarCampeonatos() {
+       return new ResponseEntity<>(this.competidoresService.listarCompetidores(), null, 200);
+    }
     
 
 }

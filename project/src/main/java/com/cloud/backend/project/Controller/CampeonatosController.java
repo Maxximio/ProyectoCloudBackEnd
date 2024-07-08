@@ -88,6 +88,15 @@ public class CampeonatosController {
         }
        
     }
+    @GetMapping(path = "/dto/id/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CampeonatosDTO> consultarCampeonatosIdDto(@PathVariable Integer id) {
+        try{
+            return new ResponseEntity<>(this.campeonatosService.buscarPorIdDto(id), null, HttpStatus.OK);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
 
     @PutMapping(path = "/{idCampeonato}",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Boolean> agregarPruebas(@PathVariable(name = "idCampeonato")Integer idCampeonato, @RequestBody List<PruebasDTO> listaIdsPrueba){

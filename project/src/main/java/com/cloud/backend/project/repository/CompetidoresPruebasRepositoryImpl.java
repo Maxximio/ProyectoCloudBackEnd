@@ -1,5 +1,6 @@
 package com.cloud.backend.project.repository;
 
+import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.cloud.backend.project.repository.modelo.CompetidoresPruebas;
@@ -7,6 +8,8 @@ import com.cloud.backend.project.repository.modelo.CompetidoresPruebas;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+
+import java.util.List;
 
 @Repository
 @Transactional
@@ -55,6 +58,13 @@ public class CompetidoresPruebasRepositoryImpl implements ICompetidoresPruebasRe
 			// TODO: handle exception
 			return false;
 		}
+	}
+
+	@Override
+	public List<CompetidoresPruebas> obtenerTodos() {
+		// TODO Auto-generated method stub
+			TypedQuery<CompetidoresPruebas> myQuery = this.entityManager.createQuery("SELECT c FROM CompetidoresPruebas c",CompetidoresPruebas.class);
+			return myQuery.getResultList();
 	}
 
 }

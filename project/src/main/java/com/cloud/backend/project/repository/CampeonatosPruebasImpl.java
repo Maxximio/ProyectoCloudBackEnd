@@ -59,4 +59,20 @@ public class CampeonatosPruebasImpl implements ICampeonatosPruebas {
 		return this.entityManager.find(CampeonatosPruebas.class, id);
 	}
 
+	@Override
+	public List<CampeonatosPruebas> buscarPorIdCampeonatos(Integer idCampeonato) {
+			// TODO Auto-generated method stub
+			TypedQuery<CampeonatosPruebas> myQ = this.entityManager.createQuery("SELECT c FROM CampeonatosPruebas c WHERE c.campeonatos.id = :idCampeonato", CampeonatosPruebas.class);
+			myQ.setParameter("idCampeonato", idCampeonato);
+			return myQ.getResultList();
+	}
+
+	@Override
+	public List<CampeonatosPruebas> obtenerTodos() {
+		// TODO Auto-generated method stub
+		TypedQuery<CampeonatosPruebas> myQ = this.entityManager.createQuery("SELECT c FROM CampeonatosPruebas c",CampeonatosPruebas.class);
+		return myQ.getResultList();
+	}
+
+
 }

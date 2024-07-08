@@ -13,6 +13,7 @@ public interface ICampeonatosService {
     List<Campeonatos> listarCampeonatos();
 
     Campeonatos buscarPorId(Integer id);
+    CampeonatosDTO buscarPorIdDto(Integer id);
 
     Boolean actualizarCampeonatos(Campeonatos campeonatos);
 

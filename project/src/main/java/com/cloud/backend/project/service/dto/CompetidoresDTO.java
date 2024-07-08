@@ -24,9 +24,8 @@ public class CompetidoresDTO {
 	private Integer id;
 	private Date fechaInscripcion;
 	private String cuentaBancaria;
-	private Usuarios usuarios;
+	private UsuarioDTO usuarios;
 	private AsociacionesDeportivas asociacionesDeportivas;
-
 	private List<Resultados> resultados;
 	private List<CampeonatosCompetidores> campeonatosCompetidores;
 	private List<CompetidoresPruebas> competidoresPruebas;

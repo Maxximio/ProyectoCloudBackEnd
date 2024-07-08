@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.cloud.backend.project.repository.ICompetidoresPruebasRepository;
 import com.cloud.backend.project.repository.modelo.CompetidoresPruebas;
 
+import java.util.List;
+
 @Service
 public class CompetidoresPruebasServiceImpl implements ICompetidoresPruebasService{
 	
@@ -35,7 +37,11 @@ public class CompetidoresPruebasServiceImpl implements ICompetidoresPruebasServi
 		// TODO Auto-generated method stub
 		return this.competidoresPruebasRepository.eliminar(id);
 	}
-	
-	
+
+	@Override
+	public List<CompetidoresPruebas> obtenerTodos() {
+		return this.competidoresPruebasRepository.obtenerTodos();
+	}
+
 
 }

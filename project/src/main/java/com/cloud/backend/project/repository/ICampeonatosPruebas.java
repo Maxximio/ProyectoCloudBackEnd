@@ -9,5 +9,7 @@ public interface ICampeonatosPruebas {
 	public Boolean actualizar(CampeonatosPruebas campeonatosPruebas);
 	public Boolean eliminar(Integer id);
 	public CampeonatosPruebas buscarPorId(Integer id);
+	public List<CampeonatosPruebas> buscarPorIdCampeonatos(Integer idCampeonato);
+	public List<CampeonatosPruebas> obtenerTodos();
 
 }
