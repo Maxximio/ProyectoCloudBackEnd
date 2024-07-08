@@ -8,5 +8,6 @@ public interface IAuthService {
 
     AuthResponse loginUsuario(LoginRequest loginRequest);
     Integer registroUsuarioAtleta(RegistroRequest registroRequest);
+    Boolean cambiarContrasenia(String correoElectronico, String nuveaContrasenia);
 
 }
