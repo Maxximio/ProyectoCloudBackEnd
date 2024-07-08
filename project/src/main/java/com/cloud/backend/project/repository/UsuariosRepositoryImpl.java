@@ -105,11 +105,11 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
 
 
     @Override
-    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc) {
+    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia) {
 
         try {
             String sql = "SELECT new UsuarioDTO(u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, u.estado, u.fechaSuscripción, d) " +
-                    "FROM DocumentosUsuarios d JOIN d.usuarios u WHERE d.tipo = :tipoDoc";
+                    "FROM DocumentosUsuarios d JOIN d.usuarios u WHERE d.tipo = :tipoDoc AND u.ciudad = :ciudad";
 
             if ("Socio".equals(tipoDoc)) {
                 sql += " AND u.estado = :estado";
@@ -124,6 +124,7 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
                 myQ.setParameter("estado", estado);
             }
             myQ.setParameter("tipoDoc", tipoDoc);
+            myQ.setParameter("ciudad", provincia);
             return myQ.getResultList();
 
         } catch (Exception e) {

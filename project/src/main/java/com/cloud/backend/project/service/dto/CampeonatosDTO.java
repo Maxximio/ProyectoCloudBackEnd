@@ -22,6 +22,7 @@ public class CampeonatosDTO {
     private String organizador;
     private String sede;
     private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private LocalDate inscripcionInicio;
     private LocalDate inscripcionFin;
     private List<PruebasDTO> pruebas;  

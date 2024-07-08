@@ -27,6 +27,7 @@ public class AuthResponse implements Serializable{
     private String contactoTelefono;
     private String password;
     private Date fechaNacimiento;
+    private Date fechaSuscripcion;
     private Character sexo;
     private Boolean estado;
     private Boolean estadoRegistro;

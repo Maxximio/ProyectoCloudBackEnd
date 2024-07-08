@@ -115,6 +115,7 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
         .organizador(campeonato.getOrganizador())
         .sede(campeonato.getSede())
         .fechaInicio(campeonato.getFechaInicio())
+                .fechaFin(campeonato.getFechaFin())
         .inscripcionInicio(campeonato.getInscripcionInicio())
         .inscripcionFin(campeonato.getInscripcionFin())
         .pruebas(pruebas)
@@ -127,7 +128,7 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
         PruebasDTO dto = new PruebasDTO();
         dto.setId(campeonatosPruebas.getPruebas().getId());
         dto.setNombre(campeonatosPruebas.getPruebas().getNombre());
-        dto.setIntentos(campeonatosPruebas.getPruebas().getIntentos());
+        dto.setDescripcion(campeonatosPruebas.getPruebas().getDescripcion());
         dto.setTipo(campeonatosPruebas.getPruebas().getTipo());
         dto.setCategoria(campeonatosPruebas.getPruebas().getCategoria());
         return dto;

@@ -34,6 +34,9 @@ public class Pruebas {
 
 	@Column(name = "prue_tipo")
 	private String tipo;
+
+	@Column(name = "prue_descripcion")
+	private String descripcion;
 	
 	@Column(name = "prue_categoria")
 	private String categoria;
@@ -151,6 +154,13 @@ public class Pruebas {
 		this.pruebasCombinadas = pruebasCombinadas;
 	}
 
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 }
 
 
