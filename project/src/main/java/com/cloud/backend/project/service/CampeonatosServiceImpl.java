@@ -139,4 +139,12 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
         return campeonatosRepo.listarCampeonatosProvincia(provincia).stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
+    @Override
+    public CampeonatosDTO listarCampeonatosId(Integer id) {
+        var a= campeonatosRepo.buscarPorId(id);
+        CampeonatosDTO b=this.convertToDto(a);
+        return b;
+    }
+
+
 }

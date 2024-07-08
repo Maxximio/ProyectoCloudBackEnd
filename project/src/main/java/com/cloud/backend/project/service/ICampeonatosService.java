@@ -25,4 +25,5 @@ public interface ICampeonatosService {
 
     Boolean agregarPruebas(Integer idCampeonato, List<PruebasDTO> pruebasDTO);
 
+    public CampeonatosDTO listarCampeonatosId(Integer id);
 }

@@ -118,5 +118,10 @@ public class CampeonatosController {
        
     }
 
+    @GetMapping(path = "/dtoid/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CampeonatosDTO> consultarCampeonatosPruebasId(@PathVariable Integer id) {
+        CampeonatosDTO c=this.campeonatosService.listarCampeonatosId(id);
+        return new ResponseEntity<>(c, null, HttpStatus.OK);
+    }
 
 }
