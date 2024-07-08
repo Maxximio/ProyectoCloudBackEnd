@@ -1,5 +1,7 @@
 package com.cloud.backend.project.repository;
 
+import com.cloud.backend.project.repository.modelo.Competidores;
+import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.cloud.backend.project.repository.modelo.Categorias;
@@ -7,6 +9,8 @@ import com.cloud.backend.project.repository.modelo.Categorias;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+
+import java.util.List;
 
 @Repository
 @Transactional
@@ -53,6 +57,11 @@ public class CategoriasRepositoryImpl implements ICategoriasRepository{
 		}
 	}
 
+	@Override
+	public List<Categorias> listarCategorias() {
+		TypedQuery<Categorias> myQuery = this.entityManager.createQuery("SELECT c FROM Categorias c",Categorias.class);
+		return myQuery.getResultList();
+	}
 	
 
 }

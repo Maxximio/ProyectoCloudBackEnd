@@ -1,5 +1,6 @@
 package com.cloud.backend.project.Controller;
 
+import com.cloud.backend.project.repository.modelo.Competidores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cloud.backend.project.repository.modelo.Categorias;
 import com.cloud.backend.project.service.ICategoriasService;
+
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/categorias")
@@ -55,4 +59,8 @@ public class CategoriasController {
 		return new ResponseEntity<>(this.categoriasService.eliminar(id), null, HttpStatus.OK);
 	}
 
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Categorias>> consultarCategorias() {
+		return new ResponseEntity<>(this.categoriasService.listarCategorias(), null, 200);
+	}
 }
