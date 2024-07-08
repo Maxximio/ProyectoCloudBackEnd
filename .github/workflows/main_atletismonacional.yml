@@ -60,5 +60,5 @@ jobs:
         with:
           app-name: 'atletismonacional'
           slot-name: 'Production'
-          package: project/target/*.jar
+          package: java-app/*.jar
           
