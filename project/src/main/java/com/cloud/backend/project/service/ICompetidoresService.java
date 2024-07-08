@@ -8,6 +8,7 @@ import com.cloud.backend.project.service.dto.CompetidoresDTO;
 public interface ICompetidoresService {
     
     public Boolean insertar(Competidores competidores);
+    public Integer insertarId(Competidores competidores);
 	public Boolean actualizar(Competidores competidores);
 	public Boolean eliminar(Integer id);
 	public Competidores buscarPorId(Integer id);

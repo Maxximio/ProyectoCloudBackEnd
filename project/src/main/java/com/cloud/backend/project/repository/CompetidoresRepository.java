@@ -22,9 +22,12 @@ public class CompetidoresRepository implements ICompetidoresRepository{
     public Boolean insertar(Competidores competidores) {
         try {
             this.entityManager.persist(competidores);
+            System.out.println("Insertado");
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+
+            System.out.println("Meko");
             return false;
         }
     }

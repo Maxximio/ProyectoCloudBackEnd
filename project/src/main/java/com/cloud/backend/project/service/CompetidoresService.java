@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.cloud.backend.project.repository.ICompetidoresRepository;
 import com.cloud.backend.project.repository.modelo.Competidores;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CompetidoresService implements ICompetidoresService{
@@ -20,8 +22,16 @@ public class CompetidoresService implements ICompetidoresService{
     private Converter converter;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public Boolean insertar(Competidores competidores) {
         return competidoresRepository.insertar(competidores);
+    }
+
+    @Override
+    public Integer insertarId(Competidores competidores) {
+        competidoresRepository.insertar(competidores);
+        Integer a=competidores.getId();
+        return a;
     }
 
     @Override

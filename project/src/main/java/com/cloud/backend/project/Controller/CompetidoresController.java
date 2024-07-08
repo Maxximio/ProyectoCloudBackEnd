@@ -33,6 +33,11 @@ public class CompetidoresController {
     public ResponseEntity<Boolean> insertarCompetidor(@RequestBody Competidores competidores) {
         return new ResponseEntity<>(this.competidoresService.insertar(competidores), null, HttpStatus.OK);
     }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/id")
+    public ResponseEntity<Integer> insertarCompetidorId(@RequestBody Competidores competidores) {
+        return new ResponseEntity<>(this.competidoresService.insertarId(competidores), null, HttpStatus.OK);
+    }
 	
 	@PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Boolean> actualizarCompetidor(@RequestBody Competidores Competidores) {
