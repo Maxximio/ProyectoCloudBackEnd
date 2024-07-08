@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CompetidoresPruebasDTO {
-
+    private Integer id;
+    private CompetidoresDTO competidores;
 }
