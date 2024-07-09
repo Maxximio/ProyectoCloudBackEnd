@@ -44,7 +44,7 @@ public class AuthRestFullController {
 
 
     @PutMapping("/recuperarPass")
-    public ResponseEntity<Boolean> recuperarContrasenia(@PathVariable String correo, @RequestParam String password) {
+    public ResponseEntity<Boolean> recuperarContrasenia(@RequestParam String correo, @RequestParam String password) {
         Boolean cambio = authService.cambiarContrasenia(correo, password);
         if (cambio) {
             return ResponseEntity.ok(cambio);
