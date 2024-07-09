@@ -2,10 +2,13 @@ package com.cloud.backend.project.Controller;
 
 import com.cloud.backend.project.repository.modelo.CompetidoresPruebas;
 import com.cloud.backend.project.service.ICompetidoresPruebasService;
+import com.cloud.backend.project.service.dto.CompetidoresDTO;
+import com.cloud.backend.project.service.dto.CompetidoresPruebasDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,8 +46,8 @@ public class CompetidoresPruebasController {
 
     //GETALL
     @GetMapping
-    public ResponseEntity<List<CompetidoresPruebas>> obtenerTodo(){
-        List<CompetidoresPruebas> dtos=this.competidoresPruebasService.obtenerTodos();
+    public ResponseEntity<HashMap<String,List<CompetidoresDTO>>> obtenerTodo(){
+        HashMap<String,List<CompetidoresDTO>> dtos=this.competidoresPruebasService.obtenerTodosDTO();
         return ResponseEntity.of(Optional.ofNullable(dtos));
     }
 }

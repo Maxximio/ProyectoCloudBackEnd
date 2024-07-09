@@ -1,12 +1,10 @@
 package com.cloud.backend.project.service.dto.utils;
 
-import com.cloud.backend.project.repository.modelo.Campeonatos;
-import com.cloud.backend.project.repository.modelo.CampeonatosPruebas;
-import com.cloud.backend.project.repository.modelo.Competidores;
-import com.cloud.backend.project.repository.modelo.Usuarios;
+import com.cloud.backend.project.repository.modelo.*;
 import com.cloud.backend.project.service.dto.*;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,8 +77,20 @@ public class Converter {
         CampeonatosPruebasDTO dto=new CampeonatosPruebasDTO();
         if(campeonatosPruebas!=null){
             dto.setId(campeonatosPruebas.getId());
-            dto.setCampeonatoId(campeonatosPruebas.getCampeonatos().getId());
-            dto.setPruebaId(campeonatosPruebas.getPruebas().getId());
+            //dto.setCampeonatoId(campeonatosPruebas.getCampeonatos().getId());
+            //dto.setPruebaId(campeonatosPruebas.getPruebas().getId());
+        }
+
+
+        return dto;
+    }
+    public CompetidoresPruebasDTO covertToDto(CompetidoresPruebas competidoresPruebas){
+        CompetidoresPruebasDTO dto=new CompetidoresPruebasDTO();
+
+        if(competidoresPruebas!=null){
+            dto.setId(competidoresPruebas.getId());
+            dto.setCompetidor(this.covertToDto(competidoresPruebas.getCompetidores()));
+            dto.setPrueba((competidoresPruebas.getPruebas()));
         }
 
 

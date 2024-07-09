@@ -30,8 +30,8 @@ public class CampeonatosPruebasController {
     @GetMapping(path = "/{id}", produces = "application/json")
     public CampeonatosPruebasDTO buscarPorId(@PathVariable Integer id) {
         CampeonatosPruebasDTO dto = this.campeonatosPruebasService.buscarPorIdDto(id);
-        dto.add(linkTo(methodOn(CampeonatosController.class).consultarCampeonatosIdDto(dto.getCampeonatoId())).withRel("campeonato"));
-        dto.add(linkTo(methodOn(PruebasController.class).consultarPrueba(dto.getPruebaId())).withRel("prueba"));
+       // dto.add(linkTo(methodOn(CampeonatosController.class).consultarCampeonatosIdDto(dto.getCampeonatoId())).withRel("campeonato"));
+        //dto.add(linkTo(methodOn(PruebasController.class).consultarPrueba(dto.getPruebaId())).withRel("prueba"));
         return dto;
     }
 
@@ -61,8 +61,8 @@ public class CampeonatosPruebasController {
         List<CampeonatosPruebasDTO> dtos=this.campeonatosPruebasService.filtrarCampeonato(campeonatoId);
         dtos.forEach(dto -> {
 
-            dto.add(linkTo(methodOn(CampeonatosController.class).consultarCampeonatosIdDto(dto.getCampeonatoId())).withRel("campeonato"));
-            dto.add(linkTo(methodOn(PruebasController.class).consultarPrueba(dto.getPruebaId())).withRel("prueba"));
+           // dto.add(linkTo(methodOn(CampeonatosController.class).consultarCampeonatosIdDto(dto.getCampeonatoId())).withRel("campeonato"));
+            //to.add(linkTo(methodOn(PruebasController.class).consultarPrueba(dto.getPruebaId())).withRel("prueba"));
         });
 
         return ResponseEntity.of(Optional.ofNullable(dtos));

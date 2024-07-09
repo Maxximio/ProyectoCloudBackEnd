@@ -74,6 +74,7 @@ public class CompetidoresService implements ICompetidoresService{
     public List<CompetidoresDTO> listarCompetidoresDTO() {
         List<Competidores> competidores = this.listarCompetidores();
         List<CompetidoresDTO> competidoresDTOS = competidores.stream().map(x -> converter.covertToDto(x)).collect(Collectors.toList());
+
         return competidoresDTOS;
     }
 
