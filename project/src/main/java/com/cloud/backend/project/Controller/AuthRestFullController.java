@@ -3,11 +3,7 @@ package com.cloud.backend.project.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.cloud.backend.project.repository.modelo.AuthResponse;
 import com.cloud.backend.project.repository.modelo.LoginRequest;
@@ -38,12 +34,23 @@ public class AuthRestFullController {
 
     @PostMapping("/registro")
     public ResponseEntity<Integer> registroUsuarioAtleta(@RequestBody RegistroRequest registroRequest) {
-    Integer id = authService.registroUsuarioAtleta(registroRequest);
-    if (id != 0) {
-        return ResponseEntity.ok(id);
-    } else {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(id);
+        Integer id = authService.registroUsuarioAtleta(registroRequest);
+        if (id != 0) {
+            return ResponseEntity.ok(id);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(id);
+        }
     }
+
+
+    @PutMapping("/recuperarPass")
+    public ResponseEntity<Boolean> recuperarContrasenia(@RequestParam String correo, @RequestParam String password) {
+        Boolean cambio = authService.cambiarContrasenia(correo, password);
+        if (cambio) {
+            return ResponseEntity.ok(cambio);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(cambio);
+        }
     }
     /*@PostMapping("/registro")
     public ResponseEntity<String> registroUsuarioAtleta(@RequestBody RegistroRequest registroRequest) {

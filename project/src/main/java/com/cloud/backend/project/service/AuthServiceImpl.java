@@ -102,7 +102,19 @@ public class AuthServiceImpl implements IAuthService{
         return flag;
     }
 
+    @Override
+    public Boolean cambiarContrasenia(String correoElectronico, String nuveaContrasenia) {
 
+        try {
+            Usuarios usuario=this.usuariosRepository.buscarPorEmail(correoElectronico);
+            usuario.setPassword(this.encriptionService.encriptPass(nuveaContrasenia));
+            this.usuariosRepository.actualizar(usuario);
+            return true;
+        }catch (Exception exception){
+            return false;
+        }
+
+    }
 
 
 }
