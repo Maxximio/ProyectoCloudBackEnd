@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cloud.backend.project.repository.modelo.Competidores;
 import com.cloud.backend.project.service.dto.CompetidoresDTO;
+import com.cloud.backend.project.service.dto.CompetidoresEstadoDTO;
 
 public interface ICompetidoresService {
     
@@ -15,5 +16,9 @@ public interface ICompetidoresService {
 	public CompetidoresDTO buscarPorIdDto(Integer id);
 	List<Competidores> listarCompetidores();
 	List<CompetidoresDTO> listarCompetidoresDTO();
+
+	public Boolean actualizarEstado(Integer id, String nuevoEstado);
+	public List<CompetidoresEstadoDTO> listarCompetidoresPorEstadoYCiudad(Boolean estado, String estadoParticipacion, String ciudad);
+
 
 }

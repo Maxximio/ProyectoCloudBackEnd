@@ -7,6 +7,7 @@ import com.cloud.backend.project.service.IRolesService;
 import com.cloud.backend.project.service.IUsuariosService;
 import com.cloud.backend.project.service.dto.ConsultaTipoDocDTO;
 import com.cloud.backend.project.service.dto.UsuarioDTO;
+import com.cloud.backend.project.service.dto.UsuarioDocumentoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -111,7 +112,7 @@ public class UsuariosControllerRestFul {
     }
 
     @PostMapping(path = "/tipoD",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<UsuarioDTO>> listarPorProvinciaPorTipoDoc(@RequestBody ConsultaTipoDocDTO tipo){
+    public ResponseEntity<List<UsuarioDocumentoDTO>> listarPorProvinciaPorTipoDoc(@RequestBody ConsultaTipoDocDTO tipo){
 
         return new ResponseEntity<>(this.usuariosService.listarCiudadPorTipoDocumento(tipo.getEstado(), tipo.getTipo(), tipo.getCiudad()),null,HttpStatus.OK);
     }

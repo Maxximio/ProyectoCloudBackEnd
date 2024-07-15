@@ -3,6 +3,7 @@ package com.cloud.backend.project.service;
 import com.cloud.backend.project.repository.IUsuariosRepository;
 import com.cloud.backend.project.repository.modelo.Usuarios;
 import com.cloud.backend.project.service.dto.UsuarioDTO;
+import com.cloud.backend.project.service.dto.UsuarioDocumentoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -90,7 +91,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 
 
     @Override
-    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia) {
+    public List<UsuarioDocumentoDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia) {
         return this.usuariosRepository.listarCiudadPorTipoDocumento(estado, tipoDoc, provincia);
     }
 

@@ -1,19 +1,14 @@
 package com.cloud.backend.project.Controller;
 
 import com.cloud.backend.project.service.dto.CompetidoresDTO;
+import com.cloud.backend.project.service.dto.CompetidoresEstadoDTO;
+import com.cloud.backend.project.service.dto.ConsultaTipoDocDTO;
+import com.cloud.backend.project.service.dto.UsuarioDocumentoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.cloud.backend.project.repository.modelo.Competidores;
 import com.cloud.backend.project.service.ICompetidoresService;
@@ -44,7 +39,20 @@ public class CompetidoresController {
         boolean actualizado = this.competidoresService.actualizar(Competidores);
         return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
     }
-   
+
+    //---------------------------
+    @PutMapping(path = "/cambiarEstado/{id}")
+    public ResponseEntity<Boolean> actualizarCompetidorEstado(@PathVariable Integer id, @RequestParam String nuevoEstado) {
+        boolean actualizado = this.competidoresService.actualizarEstado(id, nuevoEstado);
+        return ResponseEntity.status(actualizado ? HttpStatus.OK : HttpStatus.NOT_FOUND).body(actualizado);
+    }
+
+    @PostMapping(path = "/tipoCompetidor",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CompetidoresEstadoDTO>> listarCompetidores(@RequestBody ConsultaTipoDocDTO tipo){
+
+        return new ResponseEntity<>(this.competidoresService.listarCompetidoresPorEstadoYCiudad(tipo.getEstado(), tipo.getTipo(), tipo.getCiudad()),null,HttpStatus.OK);
+    }
+
     
     
     @DeleteMapping(path="/{id}")

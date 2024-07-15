@@ -30,7 +30,7 @@ public class Competidores {
 	private Date fechaInscripcion;
 
 	@Column(name = "comp_estado_participacion")
-	private String cuentaBancaria;
+	private String estadoParticipacion;
 	
 	@ManyToOne
 	@JoinColumn(name = "usua_id")
@@ -78,12 +78,12 @@ public class Competidores {
         this.fechaInscripcion = fechaInscripcion;
     }
 
-    public String getCuentaBancaria() {
-        return cuentaBancaria;
+    public String getEstadoParticipacion() {
+        return estadoParticipacion;
     }
 
-    public void setCuentaBancaria(String cuentaBancaria) {
-        this.cuentaBancaria = cuentaBancaria;
+    public void setEstadoParticipacion(String estadoParticipacion) {
+        this.estadoParticipacion = estadoParticipacion;
     }
 
     public Usuarios getUsuarios() {

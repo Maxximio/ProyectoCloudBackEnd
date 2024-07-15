@@ -4,7 +4,6 @@ import com.cloud.backend.project.repository.modelo.*;
 import com.cloud.backend.project.service.dto.*;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,7 +44,7 @@ public class Converter {
         if(competidores!=null){
             dto.setId(competidores.getId());
             dto.setFechaInscripcion(competidores.getFechaInscripcion());
-            dto.setCuentaBancaria(competidores.getCuentaBancaria());
+            dto.setCuentaBancaria(competidores.getEstadoParticipacion());
             dto.setUsuarios(this.covertToDto(competidores.getUsuarios()));
             dto.setAsociacionesDeportivas(competidores.getAsociacionesDeportivas());
            // dto.setUsuarios(competidores.getUsuarios());

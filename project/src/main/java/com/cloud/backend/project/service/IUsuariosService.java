@@ -2,6 +2,7 @@ package com.cloud.backend.project.service;
 
 import com.cloud.backend.project.repository.modelo.Usuarios;
 import com.cloud.backend.project.service.dto.UsuarioDTO;
+import com.cloud.backend.project.service.dto.UsuarioDocumentoDTO;
 
 import java.util.List;
 
@@ -22,6 +23,6 @@ public interface IUsuariosService {
 
     public List<Usuarios> listarCiudadPorEstadoReg(String provincia,Boolean estadoRegistro);
 
-    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia);
+    public List<UsuarioDocumentoDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia);
 
 }

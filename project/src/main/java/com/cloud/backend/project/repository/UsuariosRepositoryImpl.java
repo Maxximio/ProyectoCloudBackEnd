@@ -2,6 +2,7 @@ package com.cloud.backend.project.repository;
 
 import com.cloud.backend.project.repository.modelo.Usuarios;
 import com.cloud.backend.project.service.dto.UsuarioDTO;
+import com.cloud.backend.project.service.dto.UsuarioDocumentoDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -105,10 +106,10 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
 
 
     @Override
-    public List<UsuarioDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia) {
+    public List<UsuarioDocumentoDTO> listarCiudadPorTipoDocumento(Boolean estado, String tipoDoc, String provincia) {
 
         try {
-            String sql = "SELECT new UsuarioDTO(u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, u.estado, u.fechaSuscripción, d) " +
+            String sql = "SELECT new UsuarioDocumentoDTO(u.id, u.nombres, u.apellidos, u.ciudad, u.email, u.telefono, u.fechaNacimiento, u.sexo, u.estado, u.fechaSuscripción, d) " +
                     "FROM DocumentosUsuarios d JOIN d.usuarios u WHERE d.tipo = :tipoDoc AND u.ciudad = :ciudad";
 
             if ("Socio".equals(tipoDoc)) {
@@ -117,8 +118,11 @@ public class UsuariosRepositoryImpl implements IUsuariosRepository{
             if ("Registro".equals(tipoDoc)) {
                 sql += " AND u.estadoRegistro = :estado";
             }
-            TypedQuery<UsuarioDTO> myQ = this.entityManager.createQuery(sql
-                    , UsuarioDTO.class);
+            if ("Inscripcion".equals(tipoDoc)) {
+                sql += " AND u.estadoRegistro = :estado";
+            }
+            TypedQuery<UsuarioDocumentoDTO> myQ = this.entityManager.createQuery(sql
+                    , UsuarioDocumentoDTO.class);
 
             if ("Socio".equals(tipoDoc) || "Registro".equals(tipoDoc)) {
                 myQ.setParameter("estado", estado);
