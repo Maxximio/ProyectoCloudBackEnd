@@ -146,5 +146,22 @@ public class CampeonatosServiceImpl implements ICampeonatosService {
         return b;
     }
 
+    @Override
+    public List<CampeonatosDTO> listarSoloCampeonatosDto() {
+        return campeonatosRepo.listarCampeonatos().stream().map(this::convertToDtoSinPruebas).collect(Collectors.toList());
+    }
+
+    private CampeonatosDTO convertToDtoSinPruebas(Campeonatos campeonato) {
+        return CampeonatosDTO.builder()
+                .id(campeonato.getId())
+                .nombre(campeonato.getNombre())
+                .organizador(campeonato.getOrganizador())
+                .sede(campeonato.getSede())
+                .fechaInicio(campeonato.getFechaInicio())
+                .fechaFin(campeonato.getFechaFin())
+                .inscripcionInicio(campeonato.getInscripcionInicio())
+                .inscripcionFin(campeonato.getInscripcionFin())
+                .build();
+    }
 
 }

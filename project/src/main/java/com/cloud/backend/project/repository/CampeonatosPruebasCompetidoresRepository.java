@@ -61,4 +61,24 @@ public class CampeonatosPruebasCompetidoresRepository implements ICampeonatosPru
         return myQuery.getResultList();
     }
 
+    @Override
+    public List<CampeonatosPruebasCompetidores> obtenerCompetidoresDadoCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba) {
+
+        TypedQuery<CampeonatosPruebasCompetidores> myQ = this.entityManager.createQuery(
+                "SELECT cpc FROM CampeonatosPruebasCompetidores cpc " +
+                        "JOIN cpc.campeonatosPruebas c " +
+                        "WHERE c.campeonatos.id = :idCampeonato AND c.pruebas.id = :idPrueba",
+                CampeonatosPruebasCompetidores.class
+        );
+
+//        TypedQuery<CampeonatosPruebasCompetidores> myQ = this.entityManager.createQuery(
+//                "SELECT cpc FROM CampeonatosPruebasCompetidores cpc " +
+//                        "WHERE cpc.campeonatosPruebas.campeonatos.id = :idCampeonato AND cpc.campeonatosPruebas.pruebas.id = :idPrueba",
+//                CampeonatosPruebasCompetidores.class
+//        );
+        myQ.setParameter("idCampeonato", idCampeonato);
+        myQ.setParameter("idPrueba", idPrueba);
+        return myQ.getResultList();
+    }
+
 }

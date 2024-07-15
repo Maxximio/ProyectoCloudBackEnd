@@ -13,4 +13,5 @@ public interface ICampeonatosPruebasCompetidoresRepository {
 	public Boolean eliminar(Integer id);
 	public CampeonatosPruebasCompetidores buscarPorId(Integer id);
 	public List<CampeonatosPruebasCompetidores> buscarTodos();
+	List<CampeonatosPruebasCompetidores> obtenerCompetidoresDadoCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba);
 }

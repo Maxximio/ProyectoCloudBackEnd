@@ -7,6 +7,8 @@ import com.cloud.backend.project.service.dto.CampeonatoPruebasCompetidoresDTO;
 import com.cloud.backend.project.service.dto.CampeonatosPruebasDTO;
 import com.cloud.backend.project.service.dto.CompetidoresDTO;
 import com.cloud.backend.project.service.dto.PruebasDTO;
+import com.cloud.backend.project.repository.modelo.Competidores;
+import com.cloud.backend.project.service.dto.*;
 import com.cloud.backend.project.service.dto.utils.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,4 +50,32 @@ public class CampeonatosPruebasCompetidoresService implements ICampeonatosPrueba
         competidoresId(campeonatosPruebasCompetidores.getCompetidores().getId())
                 .campeonatosPruebasId(campeonatosPruebasCompetidores.getCampeonatosPruebas().getId()).build();
     }
+    
+        @Override
+        public List<CampeonatoPruebasCompetidoresLigeroDTO> obtenerCompetidoresDadoCampeonatoYPrueba(Integer idCampeonato, Integer idPrueba) {
+            return campeonatosPruebasCompetidoresRepository.obtenerCompetidoresDadoCampeonatoYPrueba(idCampeonato, idPrueba).stream().map(this::convertirALigero).toList();
+        }
+    
+        private CampeonatoPruebasCompetidoresLigeroDTO convertirALigero(CampeonatosPruebasCompetidores campeonatosPruebasCompetidores){
+    
+            CampeonatoPruebasCompetidoresLigeroDTO competidorLigero = new CampeonatoPruebasCompetidoresLigeroDTO();
+            competidorLigero.setId(campeonatosPruebasCompetidores.getId());
+    
+            Competidores competidorDatos = campeonatosPruebasCompetidores.getCompetidores();
+            competidorDatos.setAsociacionesDeportivas(null);
+            competidorDatos.setEstadoParticipacion(null);
+            competidorDatos.setFechaInscripcion(null);
+            competidorDatos.getUsuarios().setCompetidores(null);
+            competidorDatos.getUsuarios().setDocumentosUsuarios(null);
+            competidorDatos.getUsuarios().setPassword(null);
+            competidorDatos.getUsuarios().setPassword(null);
+            competidorDatos.getUsuarios().setRoles(null);
+    
+    
+            return CampeonatoPruebasCompetidoresLigeroDTO.builder().
+                    id(campeonatosPruebasCompetidores.getId()).
+                    competidor(competidorDatos)
+                    .build();
+        }
+    
 }

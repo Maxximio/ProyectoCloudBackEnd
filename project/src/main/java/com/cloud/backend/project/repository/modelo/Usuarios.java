@@ -1,4 +1,5 @@
 package com.cloud.backend.project.repository.modelo;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -80,6 +81,7 @@ public class Usuarios {
     private List<DocumentosUsuarios> documentosUsuarios;
 
     @OneToMany(mappedBy = "usuarios",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Competidores> competidores;
 
     //GET Y SET

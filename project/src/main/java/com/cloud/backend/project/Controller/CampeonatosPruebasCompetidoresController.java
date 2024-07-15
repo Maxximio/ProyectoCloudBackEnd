@@ -3,6 +3,7 @@ package com.cloud.backend.project.Controller;
 import com.cloud.backend.project.repository.modelo.CampeonatosPruebasCompetidores;
 import com.cloud.backend.project.service.ICampeonatosPruebasCompetidoresService;
 import com.cloud.backend.project.service.dto.CampeonatoPruebasCompetidoresDTO;
+import com.cloud.backend.project.service.dto.CampeonatoPruebasCompetidoresLigeroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -82,5 +83,11 @@ public class CampeonatosPruebasCompetidoresController {
 	}
 	//Con hateos
 
+	
+	@GetMapping(path = "/competidores/{idCampeonato}/{idPrueba}")
+	public ResponseEntity<List<CampeonatoPruebasCompetidoresLigeroDTO>>obtenerCompetidoresDadoCampeonatoYPrueba(@PathVariable Integer idCampeonato, @PathVariable Integer idPrueba){
+
+		return ResponseEntity.of(Optional.ofNullable(this.campeonatosPruebasCompetidoresService.obtenerCompetidoresDadoCampeonatoYPrueba(idCampeonato, idPrueba)));
+	}
 
 }

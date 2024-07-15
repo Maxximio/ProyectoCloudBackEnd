@@ -1,5 +1,7 @@
 package com.cloud.backend.project.repository.modelo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 import org.springframework.hateoas.RepresentationModel;
@@ -16,10 +18,12 @@ public class CampeonatosPruebasCompetidores extends RepresentationModel<Campeona
 
     @ManyToOne
 	@JoinColumn(name = "camp_prue_id")
+    @JsonBackReference
 	private CampeonatosPruebas campeonatosPruebas;
 
     @ManyToOne
 	@JoinColumn(name = "comp_id")
+       // @JsonBackReference
 	private Competidores competidores;
 
     public Integer getId() {

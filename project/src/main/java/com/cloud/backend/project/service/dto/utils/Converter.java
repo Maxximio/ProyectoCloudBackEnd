@@ -76,6 +76,7 @@ public class Converter {
         CampeonatosPruebasDTO dto=new CampeonatosPruebasDTO();
         if(campeonatosPruebas!=null){
             dto.setId(campeonatosPruebas.getId());
+            dto.setPrueba(campeonatosPruebas.getPruebas());
             //dto.setCampeonatoId(campeonatosPruebas.getCampeonatos().getId());
             //dto.setPruebaId(campeonatosPruebas.getPruebas().getId());
         }

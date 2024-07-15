@@ -88,6 +88,16 @@ public class CampeonatosController {
         }
        
     }
+    @GetMapping(path = "/dto/ligero",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CampeonatosDTO>> consultarCampeonatosSinPruebasDto() {
+        try{
+            System.out.println("*-------------EJecutando el metodo");
+            return new ResponseEntity<>(this.campeonatosService.listarSoloCampeonatosDto(), null, HttpStatus.OK);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
     @GetMapping(path = "/dto/id/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CampeonatosDTO> consultarCampeonatosIdDto(@PathVariable Integer id) {
         try{
