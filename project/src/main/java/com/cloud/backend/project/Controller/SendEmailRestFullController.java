@@ -1,7 +1,6 @@
 package com.cloud.backend.project.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +26,22 @@ public class SendEmailRestFullController {
                 return new ResponseEntity<>(this.sendEmailService.enviarNotificacionEmail(emailRequest.getDestinatario(),emailRequest.getAsunto(),emailRequest.getMensajeHtml()),null,HttpStatus.OK);
         }catch(Exception ex){
 
-            var mensajeError="Error al enviar el correo por error del servidor: " + ex.toString() +" detail: "+ ex.getMessage();
+            var mensajeError=crearMensajeError(ex);
 
             return new ResponseEntity<>(mensajeError, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    private String crearMensajeError(Exception ex) {
+        StringBuilder mensajeError = new StringBuilder();
+        mensajeError.append("Error al enviar el correo por error del servidor: ").append(ex.toString())
+                .append(" detail: ").append(ex.getMessage()).append("\n");
+
+        for (StackTraceElement element : ex.getStackTrace()) {
+            mensajeError.append(element.toString()).append("\n");
+        }
+
+        return mensajeError.toString();
     }
 
 }
