@@ -27,7 +27,7 @@ public class SendEmailRestFullController {
                 return new ResponseEntity<>(this.sendEmailService.enviarNotificacionEmail(emailRequest.getDestinatario(),emailRequest.getAsunto(),emailRequest.getMensajeHtml()),null,HttpStatus.OK);
         }catch(Exception ex){
 
-            return new ResponseEntity<>("Error al enviar el correo: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al enviar el correo: " + ex.toString() +" detail: "+ ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
