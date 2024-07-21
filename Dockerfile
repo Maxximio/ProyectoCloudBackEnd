@@ -1,5 +1,5 @@
-# Utiliza la imagen base de Maven para compilar el proyecto
-FROM maven:3.8.4-openjdk-17 AS build
+# Utiliza la imagen base de Maven con Java 21 para compilar el proyecto
+FROM maven:3.9.5-eclipse-temurin-21 AS build
 
 # Copia el archivo pom.xml y el código fuente al contenedor
 COPY project/pom.xml /usr/src/app/
@@ -11,8 +11,8 @@ WORKDIR /usr/src/app/project
 # Compila el proyecto y genera el JAR usando Maven
 RUN mvn clean package
 
-# Utiliza la imagen base de Java Temurin para ejecutar la aplicación
-FROM openjdk:17-alpine
+# Utiliza la imagen base de Java 21 para ejecutar la aplicación
+FROM eclipse-temurin:21-jre-alpine
 
 # Establece el directorio de trabajo en el directorio de la aplicación
 WORKDIR /app
