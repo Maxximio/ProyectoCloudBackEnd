@@ -39,7 +39,8 @@ public class SendEmailServiceImpl implements ISendEmailService {
             javaMailSender.send(message);
             flag =1;
             }catch(Exception ex){
-                throw new RuntimeException();
+
+                throw new RuntimeException(ex.getMessage().toString());
             }            
 
             return flag;
