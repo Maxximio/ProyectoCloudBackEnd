@@ -1,5 +1,5 @@
 # Utiliza la imagen base de Maven para compilar el proyecto
-FROM maven:3.8.4-openjdk-21 AS build
+FROM maven:3.8.4-eclipse-temurin-21 AS build
 
 # Copia el archivo pom.xml y el código fuente al contenedor
 COPY pom.xml /usr/src/app/
