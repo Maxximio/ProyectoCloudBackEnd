@@ -18,7 +18,7 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copia el JAR generado desde la fase anterior al contenedor actual
-COPY --from=build /usr/src/app/project/target/ProyectoCloudBackEnd-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=build /usr/src/app/project/target/project-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Ejecuta la aplicación al iniciar el contenedor
 CMD ["java", "-jar", "app.jar"]
