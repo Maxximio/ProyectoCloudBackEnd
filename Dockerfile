@@ -2,11 +2,11 @@
 FROM maven:3.8.4-openjdk-17 AS build
 
 # Copia el archivo pom.xml y el código fuente al contenedor
-COPY pom.xml /usr/src/app/
-COPY project /usr/src/app/project/
+COPY pom.xml /usr/project/src/app/
+COPY project /usr/project/src/app/project/
 
 # Establece el directorio de trabajo en el código fuente
-WORKDIR /usr/src/app
+WORKDIR /usr/project/src/app
 
 # Compila el proyecto y genera el JAR usando Maven
 RUN mvn clean package
