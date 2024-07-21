@@ -32,6 +32,9 @@ public class EmailConfig {
         properties.put("mail.debug", "true");
         //
 
+        // Asegúrate de que el encabezado 'Expect' no esté causando problemas
+        properties.put("mail.smtp.expect", "false");
+
         return properties;
     }
 
